@@ -1,0 +1,16 @@
+{
+    "name": "your-site",
+    "version": "1.0.0",
+    "description": "My personal blog",
+    "main": "index.js",
+    "scripts": {
+        "build": "eleventy",
+        "serve": "eleventy --serve"
+    },
+    "keywords": [],
+    "author": "Matthias Baetens",
+    "license": "ISC",
+    "devDependencies": {
+        "@11ty/eleventy": "^1.0.2"
+    }
+}
