@@ -1,0 +1,20 @@
+---
+layout: layouts/base.njk
+title: Blog
+---
+
+<h2>All Blog Posts</h2>
+
+{% set postslist = collections.posts | reverse %}
+{% if postslist.length > 0 %}
+    {% for post in postslist %}
+        <article>
+            <h3><a href="{{ post.url | url }}">{{ post.data.title }}</a></h3>
+            <time datetime="{{ post.date | dateIso }}">{{ post.date | dateReadable }}</time>
+            <p>{{ post.data.description or post.templateContent | striptags | truncate(100) }}</p>
+            <a href="{{ post.url | url }}" class="cta-button">Read more</a>
+        </article>
+    {% endfor %}
+{% else %}
+    <p>No posts found.</p>
+{% endif %}

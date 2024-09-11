@@ -1,0 +1,28 @@
+---
+layout: layouts/base.njk
+title: Home
+---
+
+<section id="welcome">
+    <h2>MORE COMING (PROBABLY NOT SO) SOON</h2>
+</section>
+
+<section id="recent-posts">
+    <h2>Recent Posts</h2>
+    {% set postslist = collections.posts | reverse %}
+    {% if postslist.length > 0 %}
+        {% for post in postslist.slice(0, 3) %}
+            <article>
+                <h3><a href="{{ post.url | url }}">{{ post.data.title }}</a></h3>
+                <time datetime="{{ post.date | dateIso }}">{{ post.date | dateReadable }}</time>
+                <p>{{ post.data.description or post.templateContent | striptags | truncate(100) }}</p>
+                <a href="{{ post.url | url }}" class="cta-button">Read more</a>
+            </article>
+        {% endfor %}
+        {% if postslist.length > 3 %}
+            <p><a href="/blog">View all posts</a></p>
+        {% endif %}
+    {% else %}
+        <p>No posts found.</p>
+    {% endif %}
+</section>
