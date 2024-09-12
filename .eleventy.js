@@ -2,6 +2,9 @@ module.exports = function(eleventyConfig) {
   // Copy the `css` directory to the output
   eleventyConfig.addPassthroughCopy("src/css");
 
+  // Copy the `fonts` directory to the output
+  eleventyConfig.addPassthroughCopy("src/fonts");
+
   // Add a readable date filter
   eleventyConfig.addFilter("dateReadable", dateObj => {
     return dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
