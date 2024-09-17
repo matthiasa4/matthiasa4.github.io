@@ -1,9 +1,18 @@
-module.exports = function(eleventyConfig) {
+module.exports = function (eleventyConfig) {
   // Copy the `css` directory to the output
   eleventyConfig.addPassthroughCopy("src/css");
 
   // Copy the `fonts` directory to the output
   eleventyConfig.addPassthroughCopy("src/fonts");
+
+  // Copy the `images` directory to the output
+  eleventyConfig.addPassthroughCopy("src/images");
+
+  // Add Swiper CSS and JS files
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/swiper/swiper-bundle.min.css": "css/swiper-bundle.min.css",
+    "node_modules/swiper/swiper-bundle.min.js": "js/swiper-bundle.min.js"
+  });
 
   // Add a readable date filter
   eleventyConfig.addFilter("dateReadable", dateObj => {
@@ -16,7 +25,7 @@ module.exports = function(eleventyConfig) {
   });
 
   // Create a collection for posts
-  eleventyConfig.addCollection("posts", function(collectionApi) {
+  eleventyConfig.addCollection("posts", function (collectionApi) {
     return collectionApi.getFilteredByTag("posts");
   });
 

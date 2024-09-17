@@ -75,13 +75,15 @@ body {
   color: var(--text-color);
   background-color: var(--background-color);
   margin: 0;
-  padding: 0 5%; /* Add more whitespace at the edges */
+  padding: 0 5%;
+  /* Add more whitespace at the edges */
 }
 
 header {
   background-color: var(--background-color);
   color: var(--main-color);
-  padding: 1rem 0; /* Remove horizontal padding */
+  padding: 1rem 0;
+  /* Remove horizontal padding */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -103,12 +105,14 @@ header a {
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
-  width: 12ch; /* Width for "M BAE" */
+  width: 12ch;
+  /* Width for "M BAE" */
   transition: width 0.5s ease-in-out, color 0.3s ease;
 }
 
 .site-title-container:hover {
-  width: 24ch; /* Increased to fully show "MATTHIAS BAETENS" */
+  width: 24ch;
+  /* Increased to fully show "MATTHIAS BAETENS" */
   color: var(--light-main-color);
   cursor: pointer;
 }
@@ -141,7 +145,8 @@ header a {
 main {
   max-width: 800px;
   margin: 20px auto;
-  padding: 0; /* Remove horizontal padding */
+  padding: 0;
+  /* Remove horizontal padding */
 }
 
 nav ul {
@@ -163,7 +168,8 @@ nav a {
   position: relative;
 }
 
-nav a:hover, nav a.active {
+nav a:hover,
+nav a.active {
   color: var(--main-color);
 }
 
@@ -180,7 +186,8 @@ nav a::after {
   transition: transform 0.3s ease-out;
 }
 
-nav a:hover::after, nav a.active::after {
+nav a:hover::after,
+nav a.active::after {
   transform: scaleX(1);
   transform-origin: bottom left;
 }
@@ -191,7 +198,9 @@ main {
   padding: 0 20px;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   color: var(--main-color);
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -202,7 +211,7 @@ article {
   border-radius: 5px;
   padding: 20px;
   margin-bottom: 20px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   border: 1px solid var(--dark-grey);
 }
 
@@ -277,4 +286,69 @@ img {
     margin-left: 0;
     margin-right: 20px;
   }
+}
+
+/* Custom Swiper Styles */
+.swiper-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  /* Adjust this value based on your desired height */
+}
+
+.swiper-slide {
+  position: relative;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: var(--light-grey) !important;  /* Changed to light-grey */
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  transition: color 0.3s ease; /* Add transition for smooth color change */
+}
+
+/* New hover styles for arrows */
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  color: var(--accent-color) !important;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper-pagination-bullet {
+  background: var(--main-color) !important;  /* Changed to main-color */
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--accent-color) !important;  /* Optional: change active bullet color if needed */
+}
+
+.swiper-pagination {
+  position: absolute;
+  bottom: -24px !important;  /* Moved below the images */
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  font-family: 'Source Code Pro', monospace;
 }
