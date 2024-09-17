@@ -291,13 +291,16 @@ img {
 /* Custom Swiper Styles */
 .swiper-container {
   position: relative;
-  width: 100%;
+  width: 600px;
   height: 400px;
-  /* Adjust this value based on your desired height */
+  margin: 0 auto 40px auto; 
 }
 
 .swiper-slide {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .swiper-button-next,
@@ -318,10 +321,17 @@ img {
   color: var(--accent-color) !important;
 }
 
+
 .swiper-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  position: absolute; /* Position the image absolutely within the slide */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the image */
 }
 
 .swiper-pagination-bullet {
@@ -334,7 +344,7 @@ img {
 
 .swiper-pagination {
   position: absolute;
-  bottom: -24px !important;  /* Moved below the images */
+  bottom: -30px !important;  /* Moved below the images */
   left: 0;
   right: 0;
   text-align: center;
@@ -342,7 +352,7 @@ img {
 
 .caption {
   position: absolute;
-  bottom: 0;
+  bottom: -2px;
   left: 0;
   right: 0;
   background-color: rgba(0, 0, 0, 0.6);
@@ -351,6 +361,16 @@ img {
   text-align: center;
   font-size: 14px;
   font-family: 'Source Code Pro', monospace;
+  border-radius: 5px;
+}
+
+/* Center Swiper container on smaller screens */
+@media (max-width: 600px) {
+  .swiper-container {
+    width: 90%; /* Adjust the width for smaller screens */
+  }
+}
+
 /* Updated styles for links in blog posts */
 .post-content a {
   color: var(--accent-color);
