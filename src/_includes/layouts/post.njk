@@ -1,6 +1,16 @@
 ---
 layout: layouts/base.njk
 ---
+
+{% block head %}
+<meta property="og:title" content="{{ title }}">
+<meta property="og:description" content="{{ description }}">
+{% if featuredImage %}
+<meta name="image" property="og:image" content="{{ site.url }}{{ featuredImage }}">
+{% endif %}
+<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+{% endblock %}
+
 <article>
     <h1>{{ title }}</h1>
     <time datetime="{{ page.date | dateIso }}">{{ page.date | dateReadable }}</time>

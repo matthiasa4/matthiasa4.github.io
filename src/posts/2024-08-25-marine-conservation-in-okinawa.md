@@ -2,6 +2,7 @@
 layout: layouts/post.njk
 title: Marine Conservation in Okinawa
 date: 2024-08-25
+featuredImage: matthiasbaetens.com/images/2024-08-25-marine-conservation-in-okinawa/seedling-planting/seedling-sea.jpg
 tags: 
   - posts
   - marine conservation
