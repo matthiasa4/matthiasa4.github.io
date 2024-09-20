@@ -259,11 +259,11 @@ But wait, there's more - the rest of the sand? It's largely made up of tiny frag
 <div class="swiper-container">
   <div class="swiper-wrapper">
     <div class="swiper-slide">
-      <img src="/images/2024-08-25-marine-conservation-in-okinawa/beach-cleanup/white-sand.jpg" alt="White sand">
+      <img src="/images/2024-08-25-marine-conservation-in-okinawa/beach-cleanup/600px_white-sand.jpg" alt="White sand">
       <div class="caption">TIL how white sand gets made.</div>
     </div>
     <div class="swiper-slide">
-      <img src="/images/2024-08-25-marine-conservation-in-okinawa/beach-cleanup/kerama-blue.jpg" alt="Kerama blue">
+      <img src="/images/2024-08-25-marine-conservation-in-okinawa/beach-cleanup/600px_kerama-blue.jpg" alt="Kerama blue">
       <div class="caption">I knew Yves Klein had his own blue - but wasn't aware of Kerama Blue!</div>
     </div>
   </div>
@@ -281,15 +281,15 @@ So next to visiting the local tourist information or city council (which looks l
 <div class="swiper-container">
   <div class="swiper-wrapper">
     <div class="swiper-slide">
-      <img src="/images/2024-08-25-marine-conservation-in-okinawa/beach-cleanup/ybcn-0.jpg" alt="Yomitan Beach Clean Up">
+      <img src="/images/2024-08-25-marine-conservation-in-okinawa/beach-cleanup/600px_ybcn-0.jpg" alt="Yomitan Beach Clean Up">
       <div class="caption">Yomitan Beach Clean Network.</div>
     </div>
     <div class="swiper-slide">
-      <img src="/images/2024-08-25-marine-conservation-in-okinawa/beach-cleanup/ybcn-1.jpg" alt="Yomitan Beach Clean Up">
+      <img src="/images/2024-08-25-marine-conservation-in-okinawa/beach-cleanup/600px_ybcn-1.jpg" alt="Yomitan Beach Clean Up">
       <div class="caption">Yomitan Beach Clean Network.</div>
     </div>
     <div class="swiper-slide">
-      <img src="/images/2024-08-25-marine-conservation-in-okinawa/beach-cleanup/ybcn-2.jpg" alt="Yomitan Beach Clean Up">
+      <img src="/images/2024-08-25-marine-conservation-in-okinawa/beach-cleanup/600px_ybcn-2.jpg" alt="Yomitan Beach Clean Up">
       <div class="caption">Yomitan Beach Clean Network.</div>
     </div>
   </div>
@@ -309,15 +309,15 @@ Lastly, we visited OIST, a world-class research university and well-known in the
 <div class="swiper-container">
   <div class="swiper-wrapper">
     <div class="swiper-slide">
-      <img src="/images/2024-08-25-marine-conservation-in-okinawa/oist/visitors-0.jpg" alt="OIST crew">
+      <img src="/images/2024-08-25-marine-conservation-in-okinawa/oist/600px_visitors-0.jpg" alt="OIST crew">
       <div class="caption">OIST crew.</div>
     </div>
     <div class="swiper-slide">
-      <img src="/images/2024-08-25-marine-conservation-in-okinawa/oist/visitors-1.jpg" alt="OIST crew">
+      <img src="/images/2024-08-25-marine-conservation-in-okinawa/oist/600px_visitors-1.jpg" alt="OIST crew">
       <div class="caption">OIST crew.</div>
     </div>
     <div class="swiper-slide">
-      <img src="/images/2024-08-25-marine-conservation-in-okinawa/oist/visitors-2.jpg" alt="OIST crew">
+      <img src="/images/2024-08-25-marine-conservation-in-okinawa/oist/600px_visitors-2.jpg" alt="OIST crew">
       <div class="caption">OIST crew.</div>
     </div>
   </div>
@@ -333,19 +333,19 @@ OIST's state-of-the-art [Marine Science Station](https://www.oist.jp/campus/mari
 <div class="swiper-container">
   <div class="swiper-wrapper">
     <div class="swiper-slide">
-      <img src="/images/2024-08-25-marine-conservation-in-okinawa/oist/info-0.jpg" alt="OIST projects">
+      <img src="/images/2024-08-25-marine-conservation-in-okinawa/oist/600px_info-0.jpg" alt="OIST projects">
       <div class="caption">OIST projects.</div>
     </div>
     <div class="swiper-slide">
-      <img src="/images/2024-08-25-marine-conservation-in-okinawa/oist/info-1.jpg" alt="OIST projects">
+      <img src="/images/2024-08-25-marine-conservation-in-okinawa/oist/600px_info-1.jpg" alt="OIST projects">
       <div class="caption">OIST projects.</div>
     </div>
     <div class="swiper-slide">
-      <img src="/images/2024-08-25-marine-conservation-in-okinawa/oist/info-2.jpg" alt="OIST projects">
+      <img src="/images/2024-08-25-marine-conservation-in-okinawa/oist/600px_info-2.jpg" alt="OIST projects">
       <div class="caption">OIST projects.</div>
     </div>
     <div class="swiper-slide">
-      <img src="/images/2024-08-25-marine-conservation-in-okinawa/oist/marine-climate-change-unit.jpg" alt="OIST projects">
+      <img src="/images/2024-08-25-marine-conservation-in-okinawa/oist/600px_marine-climate-change-unit.jpg" alt="OIST projects">
       <div class="caption">OIST projects.</div>
     </div>
   </div>
@@ -361,23 +361,23 @@ This visit to OIST provided valuable context to the conservation activities I ha
 <div class="swiper-container">
   <div class="swiper-wrapper">
     <div class="swiper-slide">
-      <img src="/images/2024-08-25-marine-conservation-in-okinawa/oist/campus-view.jpg" alt="OIST campus">
+      <img src="/images/2024-08-25-marine-conservation-in-okinawa/oist/600px_campus-view.jpg" alt="OIST campus">
       <div class="caption">OIST campus.</div>
     </div>
     <div class="swiper-slide">
-      <img src="/images/2024-08-25-marine-conservation-in-okinawa/oist/hallway-0.jpg" alt="OIST campus">
+      <img src="/images/2024-08-25-marine-conservation-in-okinawa/oist/600px_hallway-0.jpg" alt="OIST campus">
       <div class="caption">OIST campus.</div>
     </div>
     <div class="swiper-slide">
-      <img src="/images/2024-08-25-marine-conservation-in-okinawa/oist/view.jpg" alt="OIST campus">
+      <img src="/images/2024-08-25-marine-conservation-in-okinawa/oist/600px_view.jpg" alt="OIST campus">
       <div class="caption">OIST campus.</div>
     </div>
     <div class="swiper-slide">
-      <img src="/images/2024-08-25-marine-conservation-in-okinawa/oist/hallway-2.jpg" alt="OIST campus">
+      <img src="/images/2024-08-25-marine-conservation-in-okinawa/oist/600px_hallway-2.jpg" alt="OIST campus">
       <div class="caption">OIST campus.</div>
     </div>
     <div class="swiper-slide">
-      <img src="/images/2024-08-25-marine-conservation-in-okinawa/oist/hallway-1.jpg" alt="OIST campus">
+      <img src="/images/2024-08-25-marine-conservation-in-okinawa/oist/600px_hallway-1.jpg" alt="OIST campus">
       <div class="caption">OIST campus.</div>
     </div>
   </div>
