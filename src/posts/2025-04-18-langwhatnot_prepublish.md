@@ -5,46 +5,12 @@ date: 2025-04-19
 featuredImage: matthiasbaetens.com/images/2024-08-25-marine-conservation-in-okinawa/seedling-planting/seedling-sea.jpg
 tags: 
   - posts
+description: 236 days or almost 8 months. I guess I kept my "More coming (probably not so) soon" promise.  
 ---
-
-<style>
-  /* Position captions below images instead of overlaying them */
-  .swiper-slide .caption {
-    position: static !important; /* Override absolute positioning */
-    bottom: auto !important;
-    left: auto !important;
-    right: auto !important;
-    margin-top: 10px; /* Add space between image and caption */
-    background-color: rgba(0, 0, 0, 0.6); /* Keep the original dark background */
-    color: white; /* Keep the original text color */
-    padding: 10px;
-    text-align: center;
-    width: 100%;
-    border-radius: 5px; /* Optional: adds rounded corners to caption */
-  }
-  
-  /* Fix the image positioning since we're changing the layout */
-  .swiper-slide img {
-    position: static !important;
-    transform: none !important;
-    top: auto !important;
-    left: auto !important;
-    margin: 0 auto; /* Center the image */
-    display: block;
-  }
-  
-  /* Adjust the slide container to accommodate the new layout */
-  .swiper-slide {
-    position: relative;
-    display: block !important;
-    height: auto !important;
-    padding-bottom: 40px; /* Add space for the caption */
-  }
-</style>
 
 236 days or almost 8 months. I guess I kept my "More coming (probably not so) soon" promise.
 
-<div class="swiper-container">
+<div class="swiper-container captions-below">
   <div class="swiper-wrapper">
     <div class="swiper-slide">
       <img src="/images/2025-04-19-langwhatnot/intro/coming_soon.png">
@@ -80,7 +46,7 @@ The attentive reader might've noticed I started with writing verbose captions fo
 
 Not too much later, towards the end of the blogpost, things started turning to the rather... "lazy"? side.
 
-<div class="swiper-container">
+<div class="swiper-container captions-below">
   <div class="swiper-wrapper">
     <div class="swiper-slide">
       <img src="/images/2025-04-19-langwhatnot/intro/captions_end.png">
@@ -118,7 +84,7 @@ One was a blogpost by BAIR (Berkeley Artificial Intelligence Research) that talk
 
 Another inspiration (hey Andrew Ng is back!) came from the founder of Google Brain discussing the trend of AI Agents and their potential impact, covering topics like reflection, tool-use, planning, and multi-agent collaboration (maybe he knew about the [A2A protocol](https://developers.googleblog.com/en/a2a-a-new-era-of-agent-interoperability/) coming up?!) on [YouTube](https://www.youtube.com/watch?v=sal78ACtGTc):
 
-<div class="swiper-container">
+<div class="swiper-container captions-below">
   <div class="swiper-wrapper">
     <div class="swiper-slide">
       <img src="/images/2025-04-19-langwhatnot/the-inspiration/ng-agents.png">
@@ -165,10 +131,11 @@ So what exactly did we see in the demo? Let's look at the different steps:
 ### LangGraph
 
 This seems like the perfect time to introduce [LangGraph](https://www.langchain.com/langgraph). Some of you might have spotted it while watching the demo, but these steps perfectly fit a _directed graph_:
-<div class="swiper-container">
+<div class="swiper-container captions-below">
   <div class="swiper-wrapper">
     <div class="swiper-slide">
       <img src="/images/2025-04-19-langwhatnot/the-tech/langgraph-graph.png">
+      <div class="caption">Visual representation of my LangGraph graph</div>
     </div>
   </div>
   <!-- Add pagination -->
