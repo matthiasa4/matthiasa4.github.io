@@ -14,6 +14,16 @@ In the past weeks, I have spent some time around the beautiful islands in Okinaw
 
 (don't care about the story, just want to know about how you can help out? I GOT YOU COVERED: <a href="#marine-conservation-okinawa">click here to skip to the next section</a>)
 
+Full table of contents:
+- [The background story](#the-background-story)
+  - [Coral seedling making with Lagoon Diving](#coral-seedling-making-with-lagoon-diving)
+  - [Coral seedling planting](#coral-seedling-planting)
+  - [Dive cleanup](#dive-cleanup)
+  - [Turtle nest excavation 🐢](#turtle-nest-excavation-)
+  - [Beach clean-ups 🏖️](#beach-clean-ups-️)
+  - [Okinawa Institute of Science and Technology (OIST) visit 🔬](#okinawa-institute-of-science-and-technology-oist-visit-)
+- [Wanna get your hands dirty?! 🌊🧼](#wanna-get-your-hands-dirty-)
+
 ## The background story
 
 In 2013, my parents and I were traveling to Australia. One of the things Australia 🇦🇺 is known for is the Great Barrier Reef, and I was set on visiting it. But how to visit when something is underwater? Scuba diving was the obvious option, and that’s how I took my first plunge into the underwater world: a few dives off the coast of Port Douglas.
