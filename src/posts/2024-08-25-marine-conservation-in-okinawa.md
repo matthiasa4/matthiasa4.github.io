@@ -56,7 +56,7 @@ While planning my trip, I got inspired by [this post](https://visitokinawajapan.
 
 This prompted me to plan as many marine conservation activities as possible. by reaching out to the local dive centres, Facebook groups, the tourist information agency, and the universities involved in research - which proved to be a bigger challenge than I expected. But the first two activities I found was through the post mentioned above: coral seedling making and coral seedling plantation with [Okinawa Diving Service Lagoon](https://www.lagoon-diving.com/)!
 
-### **Coral seedling making with Lagoon Diving**
+### Coral seedling making with Lagoon Diving
 
 We started our journey with Kazuma-san from [Lagoon Diving](https://www.lagoon-diving.com/courses-2/%E6%81%A9%E7%B4%8D%E6%9D%91-%E3%82%B5%E3%83%B3%E3%82%B4%E8%8B%97%E4%BD%9C%E3%82%8A%E4%BD%93%E9%A8%93) with a little quiz to see what we already knew about coral - my first learning happened there already: coral polyps are actually related to jellyfish 🪼! The quiz continued into a small lecture on coral reproduction (did you know corals reproduce both through sexual as well as asexual reproduction?), the different species ([about half of the known coral species can be found in Okinawa](https://www.env.go.jp/nature/biodic/coralreefs/reference/contents/0101.pdf)!), the benefits for humans, the ways they can be endangered or destroyed, and finally, what we can do to help. This expanded our knowledge and awareness of why conservation is essential and inspired us for future activities.
 
@@ -114,7 +114,7 @@ We got to choose our very own seedling, paint our concrete block and attached th
   <div class="swiper-button-prev"></div>
 </div>
 
-### **Coral seedling planting**
+### Coral seedling planting
 
 Obviously, our work wouldn’t be done without also planting the seedlings on the underwater farm. After getting our dive gear ready and wetsuits on, we took the seedlings and headed to the marina for our planting dive. The process was relatively easy: we got to add our newly minted seedlings with the other ones already there. Afterward, we took a 6-month-old seedling and planted it on a rock a bit further. I was amazed at how quickly the seedlings grow, almost like a plant! As you might know, coral reefs are primarily made up of calcium carbonate (the same mineral that makes up limestone) - it’s impressive that it can grow at such speed. 
 
@@ -146,7 +146,7 @@ After the planting, we had some time to enjoy the artificial and natural reefs. 
   <div class="swiper-button-prev"></div>
 </div>
 
-### **Dive cleanup**
+### Dive cleanup
 
 With some time left, we embarked on a second dive for the day. Now, the goal was to do some clean-up. Being an island part of the Ryukya Archipelago, Okinawa has a rich history of fishing and trading, and still today Okinawans are known for their fishing. So on our dive, we naturally encountered a few fishing lines. Even though not as impressive in volume or weight as the dive cleanups I have done in Singapore, the potential negative impact is not to be underestimated: just one line can cause many animals to get tangled (”ghost fishing”), the animals can ingest the plastic, their habitat can be further destroyed amongst things.
 
@@ -168,7 +168,7 @@ With some time left, we embarked on a second dive for the day. Now, the goal was
   <div class="swiper-button-prev"></div>
 </div>
 
-### **Turtle nest excavation 🐢**
+### Turtle nest excavation 🐢
 
 While planning, I knew that coral seedling creation and plantation would be the highlight of my trip. However, I was determined to do more. After extensive research, outreach, and a bunch of WhatsApp messages, my efforts began to bear fruit. As one of the results, the great Julien from Bubble Addict Okinawa helped me discover [Churamura](https://churamura.org/), a local organization focused on sea turtle conservation. I was fortunate to be around the islands when they announced a pop-up [nest excavation event](https://www.instagram.com/p/C-rk_4MxlpI/).
 
@@ -225,7 +225,7 @@ Our contribution to the event further supported the work done by Churamura in co
 </div>
 
 
-### **Beach clean-ups 🏖️**
+### Beach clean-ups 🏖️
 
 All of these happened because of the preparation work I put in before heading to Okinawa. Little did I know there would be some serendipitous marine conservation as well! When I arrived in Zamami Island, the first thing I did was head to the [fantastic visitor centre](https://maps.app.goo.gl/uqdUMpfciGutPDG19) near the port. Apart from speedy WiFi, funky sodas and information about how the water gets its [“Kerama Blue” colour](https://www.japan.travel/en/japans-local-treasures/beautiful-kerama-blue-zamami-2022/), they also make it possible for visitors to participate in organised or impromptu beach cleanups. For as little as ¥500, you get a bag, instructions and gloves and you can go off and clean a beach, which I did. As I cleaned the beach and on the way home, I noticed approving looks and grateful nods from the locals passing by. It was a heartening reminder that even small actions can make a difference and potentially inspire others to join in conservation efforts.
 
@@ -312,7 +312,7 @@ So next to visiting the local tourist information or city council (which looks l
 
 And what’s the impact of a simple beach clean-up? Similar to a dive clean-up, you avoid animals ingesting or getting tangled in trash, you avoid further polluting the ocean, and keeping the coastal habitats and ecosystem healthy.
 
-### **Okinawa Institute of Science and Technology (OIST) visit 🔬**
+### Okinawa Institute of Science and Technology (OIST) visit 🔬
 
 Lastly, we visited OIST, a world-class research university and well-known in the marine conservation science space. I say ‘we’, because one of my colleagues is Okinawan and I had the pleasure to meet and [#have-fun](https://careers.doit.com/#:~:text=Pursue%20Knowledge-,Have%0AFun,-Others%20say%20we%27re) with him. Through his connections, we managed to get a full tour of the campus, learning about the school, the different research areas, and we even had the chance to meet with one of its neuroscience professors - overall a very awesome and enlightening visit. 
 
