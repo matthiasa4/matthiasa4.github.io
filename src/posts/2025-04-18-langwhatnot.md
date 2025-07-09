@@ -8,7 +8,7 @@ tags:
 description: 236 days or almost 8 months. I guess I kept my "More coming (probably not so) soon" promise. 
 ---
 
-236 days or almost 8 months. I guess I kept my "More coming (probably not While it does more than that, I use LangChain to format prompts, call LLMs, and parse outputs in a chain. I define a <code>PromptTemplate</code> which I feed into model calls after supplying some input parameters before feeding it to an output parser using the [LangChain Expression Language (LCEL)](https://python.langchain.com/docs/concepts/lcel) pipeline syntax. LCEL allows you to "pipe" components together in a declarative way – for example, <code>prompt | model | parser</code> creates a sequence where the prompt's output feeds into the model, and the model's output feeds into a parser​. Under the hood, LangChain treats each piece (prompt, LLM, parser) as a Runnable and the <code>|</code> operator composes them.o) soon" promise.
+236 days or almost 8 months. I guess I kept my "More coming (probably not so) soon" promise.
 
 <div class="swiper-container">
   <div class="swiper-wrapper">
