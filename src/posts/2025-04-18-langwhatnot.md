@@ -584,7 +584,7 @@ Too lazy to check it out yourself? I did a run-through with an example I used:
   </video>
 </div>
 
-I also included a full log of the run [here](https://github.com/matthiasa4/langwhatnot/blob/main/code/output/logs.txt) and the final output [here](https://github.com/matthiasa4/langwhatnot/blob/main/code/output/600px_info-0_caption_20250706_202547.txt)
+I also included a full log of the run [here](https://github.com/matthiasa4/langwhatnot/blob/main/code/output/logs.txt) and the final output [here](https://github.com/matthiasa4/langwhatnot/blob/main/code/output/600px_info-0_caption_20250706_202547.txt).
 
 # The future (mine and... yours?)
 
