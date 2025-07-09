@@ -565,7 +565,7 @@ In a nutshell, LangSmith provides the necessary tooling to move beyond your week
 
 <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin-bottom: 20px;">
   <video controls style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
-    <source src="/images/2025-04-19-langwhatnot/the-tech/langsmith-demo.mp4" type="video/mp4">
+    <source src="/images/2025-04-19-langwhatnot/demo/langsmith.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
 </div>
@@ -579,7 +579,7 @@ The full code I used can be found in the [LangWhatNot repo on my GitHub](https:/
 Too lazy to check it out yourself? I did a run-through with an example I used:
 <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin-bottom: 20px;">
   <video controls style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
-    <source src="/images/2025-04-19-langwhatnot/demo/langwhatnot.mov" type="video/quicktime">
+    <source src="/images/2025-04-19-langwhatnot/demo/caption-generate.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
 </div>
