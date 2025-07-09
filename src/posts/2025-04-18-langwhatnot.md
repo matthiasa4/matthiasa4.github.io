@@ -537,7 +537,7 @@ How did Groq achieve this lightning-fast inference? They developed a proprietary
 - **Deterministic Compute & Networking**: Every execution step is completely predictable, required to make an assembly line run efficiently. Data flow is statically scheduled by the software during compilation, and executes the same way every time the program runs.
 - **On-chip memory**: LPUs include both memory and compute on-chip, vastly improving the speed of storing and retrieving data while eliminating timing variation. Groq's on-chip SRAM has memory bandwidth upwards of 80 terabytes/second, while GPU off-chip HBM clocks in at about eight terabytes/second.
 
-Groq supports inference for Gemma 2 9B and a bunch of other open source models at modest prices: https://groq.com/pricing
+Groq supports inference for Gemma 2 9B and a bunch of other open source models at modest prices: [groq.com/pricing](https://groq.com/pricing)
 
 ## LangSmith
 
