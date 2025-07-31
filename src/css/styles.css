@@ -470,3 +470,26 @@ del {
 .post-content a:active {
   color: var(--light-main-color);
 }
+
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+th, td {
+  border: 1px solid var(--light-grey);
+  padding: 0.75rem;
+  text-align: center;
+}
+
+th {
+  background-color: var(--main-color);
+  color: white;
+  font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+  background-color: rgba(4, 47, 64, 0.05);
+}
