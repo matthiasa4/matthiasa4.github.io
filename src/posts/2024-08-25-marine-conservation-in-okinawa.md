@@ -12,17 +12,17 @@ tags:
 
 In the past weeks, I have spent some time around the beautiful islands in Okinawa, Japan’s 🇯🇵 most southern prefecture. This post shares my experiences in finding and participating in marine conservation efforts across these islands, under the mantra: “take only photos, leave only bubbles” 🫧. But before we dive in, a bit of my personal history and what brought us to this day…
 
-(don't care about the story, just want to know about how you can help out? I GOT YOU COVERED: <a href="#marine-conservation-okinawa">click here to skip to the next section</a>)
+(don't care about the story, just want to know about how you can help out? I GOT YOU COVERED: <a href="#marine-conservation-in-okinawa">click here to skip to the next section</a>)
 
 Full table of contents:
 - [The background story](#the-background-story)
   - [Coral seedling making with Lagoon Diving](#coral-seedling-making-with-lagoon-diving)
   - [Coral seedling planting](#coral-seedling-planting)
   - [Dive cleanup](#dive-cleanup)
-  - [Turtle nest excavation 🐢](#turtle-nest-excavation-)
-  - [Beach clean-ups 🏖️](#beach-clean-ups-️)
-  - [Okinawa Institute of Science and Technology (OIST) visit 🔬](#okinawa-institute-of-science-and-technology-oist-visit-)
-- [Wanna get your hands dirty?! 🌊🧼](#wanna-get-your-hands-dirty-)
+  - [Turtle nest excavation 🐢](#turtle-nest-excavation)
+  - [Beach clean-ups 🏖️](#beach-clean-ups)
+  - [Okinawa Institute of Science and Technology (OIST) visit 🔬](#okinawa-institute-of-science-and-technology-oist-visit)
+- [Wanna get your hands dirty?! 🌊🧼](#wanna-get-your-hands-dirty)
 
 ## The background story
 
@@ -44,7 +44,7 @@ BUT, you don’t have to travel far to participate in marine conservation. Since
   <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FBlueWaterEduFest%2Fposts%2Fpfbid0d94WAo9ELqJR1pAopudDfmD1QaqKzHaX91JkHEhLCtZMugP1hjCx8vDVhw9KJJnal&show_text=true&width=500" width="500" height="571" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
 </div>
 
-<h2 id="marine-conservation-okinawa">Marine conservation in Okinawa</h2>
+## Marine conservation in Okinawa
 
 So, what led me to write this blog post today? It’s August 2024, about one year after joining [DoiT](https://doit.com/). You might be wondering, why do you talk about your company that helps other companies navigate their challenges in the cloud while you are talking about marine conservation 🤔.
 

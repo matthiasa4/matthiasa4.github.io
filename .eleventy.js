@@ -1,4 +1,18 @@
+const markdownItAnchor = require("markdown-it-anchor");
+
 module.exports = function (eleventyConfig) {
+  // Configure markdown-it with anchor plugin
+  let markdownIt = require("markdown-it");
+  let markdownLib = markdownIt({
+    html: true,
+  }).use(markdownItAnchor, {
+    permalink: markdownItAnchor.permalink.ariaHidden({
+      placement: 'after'
+    })
+  });
+  
+  eleventyConfig.setLibrary("md", markdownLib);
+
   // Copy the `css` directory to the output
   eleventyConfig.addPassthroughCopy("src/css");
 
