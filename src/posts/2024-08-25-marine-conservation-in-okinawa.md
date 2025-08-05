@@ -19,10 +19,10 @@ Full table of contents:
   - [Coral seedling making with Lagoon Diving](#coral-seedling-making-with-lagoon-diving)
   - [Coral seedling planting](#coral-seedling-planting)
   - [Dive cleanup](#dive-cleanup)
-  - [Turtle nest excavation 🐢](#turtle-nest-excavation)
-  - [Beach clean-ups 🏖️](#beach-clean-ups)
-  - [Okinawa Institute of Science and Technology (OIST) visit 🔬](#okinawa-institute-of-science-and-technology-oist-visit)
-- [Wanna get your hands dirty?! 🌊🧼](#wanna-get-your-hands-dirty)
+  - [Turtle nest excavation 🐢](#turtle-nest-excavation-🐢)
+  - [Beach clean-ups 🏖️](#beach-clean-ups-🏖️)
+  - [Okinawa Institute of Science and Technology (OIST) visit 🔬](#okinawa-institute-of-science-and-technology-(oist)-visit-🔬)
+- [Wanna get your hands dirty?! 🌊🧼](#wanna-get-your-hands-dirty%3F!-🌊🧼)
 
 ## The background story
 

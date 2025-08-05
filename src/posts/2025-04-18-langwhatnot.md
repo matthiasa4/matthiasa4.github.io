@@ -67,9 +67,9 @@ Since I was in the middle of trying to understand the Gen AI hype, I decided to 
 
 Full table of contents:
 - [The background story](#the-background-story)
-  - [The bad 😬](#the-bad)
-  - [The good 🎉](#the-good-)
-  - [The ugly 🤡](#the-ugly-)
+  - [The bad 😬](#the-bad-😬)
+  - [The good 🎉](#the-good-🎉)
+  - [The ugly 🤡](#the-ugly-🤡)
 - [The inspiration](#the-inspiration)
 - [The demo](#the-demo)
 - [The tech](#the-tech)
@@ -79,7 +79,7 @@ Full table of contents:
   - [Groq](#groq)
   - [LangSmith](#langsmith)
 - [The result](#the-result)
-- [The future (mine and... yours?)](#the-future-mine-and-yours)
+- [The future (mine and... yours?)](#the-future-(mine-and...-yours%3F))
     - [Model Improvements](#model-improvements)
     - [User Interfaces \& Experience](#user-interfaces--experience)
     - [Emerging Standards \& Protocols](#emerging-standards--protocols)
