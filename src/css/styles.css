@@ -398,6 +398,34 @@ code {
   font-weight: 500;
 }
 
+/* Multi-line code block styling */
+.code-snippet {
+  margin: 1.5em 0;
+  background-color: rgba(4, 47, 64, 0.08);
+  border-radius: 8px;
+  border: 1px solid rgba(4, 47, 64, 0.2);
+  overflow: hidden;
+}
+
+.code-snippet pre {
+  margin: 0;
+  padding: 1.5em;
+  overflow-x: auto;
+  background: none;
+  border: none;
+}
+
+.code-snippet code {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.9em;
+  color: var(--main-color);
+  background: none;
+  padding: 0;
+  border: none;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
 /* Strikethrough styling */
 del {
   text-decoration: line-through;
@@ -493,3 +521,66 @@ th {
 tbody tr:nth-child(even) {
   background-color: rgba(4, 47, 64, 0.05);
 }
+
+/* Professional blockquote styling */
+blockquote {
+  position: relative;
+  margin: 2rem 0;
+  padding: 1rem 1.5rem;
+  border-left: 4px solid var(--accent-color);
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--light-main-color);
+}
+
+blockquote p {
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Style for blockquotes with citations */
+blockquote footer {
+  margin-top: 1rem;
+  font-style: normal;
+  font-size: 0.9em;
+  color: var(--main-color);
+  font-weight: 500;
+  text-align: right;
+  background: none;
+  padding: 0;
+}
+
+blockquote footer:before {
+  content: '— ';
+  color: var(--accent-color);
+}
+
+/* Twitter/X blockquote specific styling */
+blockquote.twitter-tweet {
+  background: #f8fafc;
+  border-left-color: #1da1f2;
+  font-style: normal;
+}
+
+blockquote.twitter-tweet::before {
+  content: '';
+  display: none;
+}
+
+/* Responsive blockquote styling */
+@media (max-width: 600px) {
+  blockquote {
+    margin: 1.5rem -10px;
+    padding: 1rem 1rem 1rem 2rem;
+    border-radius: 0;
+  }
+  
+  blockquote::before {
+    font-size: 2rem;
+    left: 0.5rem;
+  }
