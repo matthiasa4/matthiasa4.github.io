@@ -1,10 +1,10 @@
 ---
 layout: layouts/post.njk
-
 date: 2025-08-14
 tags: 
   - posts
-description: 
+title: "Browse to Break: Productionizing Agentic ASM on AWS with Bedrock & Strands"
+description: "In this post we deep dive into the design and deployment of an Attack Surface Management agent built on Strands Agents, Amazon Bedrock, AgentCore, and Knowledge Bases"
 ---
 
 Ever wondered how "much" internet we have? While (as usually) the answer depends on "how do you want to measure it", according to [Netcraft](https://www.netcraft.com/blog/june-2025-web-server-survey) we have about 1.25 billion websites (June 2025). Statista estimates that we created, consumed and stored [149 zettabytes in 2024](https://www.statista.com/statistics/871513/worldwide-data-created/). That's 149 sextillion bytes (149,000,000,000,000,000,000,000 bytes), 149 000 exabytes or 149 billion terabytes. **A. lot. of. data.**
@@ -13,31 +13,31 @@ Full table of contents:
 - [TLDR;](#tldr)
 - [What we built](#what-we-built)
   - [The complete tech stack](#the-complete-tech-stack)
-- [Diving deeper](#diving-deeper)
+- [Diving deeper: building blocks](#diving-deeper-building-blocks)
   - [Agent framework: Strands Agents](#agent-framework-strands-agents)
   - [(Reasoning) models](#reasoning-models)
-  - [Tool use and Model Context Protocol (MCP)](#tool-use-and-model-context-protocol-(mcp))
+  - [Tool use and Model Context Protocol (MCP)](#tool-use-and-model-context-protocol-mcp)
     - [Playwright](#playwright)
     - [Filesystem](#filesystem)
-  - [Grounding and retrieval-augmented generation (RAG)](#grounding-and-retrieval-augmented-generation-(rag))
+  - [Grounding and retrieval-augmented generation (RAG)](#grounding-and-retrieval-augmented-generation-rag)
   - [Productionising the whole thing](#productionising-the-whole-thing)
     - [Deployment](#deployment)
     - [Observability and evaluation](#observability-and-evaluation)
 - [Conclusion and future work](#conclusion-and-future-work)
 
-How much of that data is consumed by us, the flesh and blood human, you ask? Well, since 2024, you'll be happy to hear, less than half! Bot traffic accounted for 51% of all web traffic, according to [2025's Imperva Bad Bot Report](https://www.thalesgroup.com/en/worldwide/defence-and-security/press_release/artificial-intelligence-fuels-rise-hard-detect-bots). Out of this 51%, 37% are malicious bots.
+How much of that data is consumed by us, the flesh and blood human, you ask? Well, since 2024, you'll be happy to hear, less than half! Bot traffic accounted for 51% of all web traffic, according to [2025's Imperva Bad Bot Report](https://www.thalesgroup.com/en/worldwide/defence-and-security/press_release/artificial-intelligence-fuels-rise-hard-detect-bots). Malicious bots made up 37% of all traffic.
 
-And how does the internet consume "us", humans? According to the [Digital 2025 flagship report](https://datareportal.com/reports/digital-2025-global-overview-report), the average user spends 6 hours and 38 minutes on the internet each day. Combining that with 5.56 billion people on this planet (see [page 52](https://indd.adobe.com/view/9d9a68f6-38a9-4278-b61c-4506b24240b0?startpage=52)), that means over 36 billion human‑hours/day. **A. lot. of. time.**
+And how does the internet consume "us", humans? According to the [Digital 2025 flagship report](https://datareportal.com/reports/digital-2025-global-overview-report), the average user spends 6 hours and 38 minutes on the internet each day. Combining that with 5.56 billion internet users (see [page 52](https://indd.adobe.com/view/9d9a68f6-38a9-4278-b61c-4506b24240b0?startpage=52)), that means over 36 billion human‑hours/day. **A. lot. of. time.**
 
 <div style="text-align: center;">
 <iframe style="border: 1px solid #777;" src="https://indd.adobe.com/embed/9d9a68f6-38a9-4278-b61c-4506b24240b0?startpage=69&allowFullscreen=true" width="525px" height="371px" frameborder="0" allowfullscreen=""></iframe>
 </div>
 
-But before we get distracted, back to the topic of the day: bots and (malicious) internet users. One of our customers at [DoiT](http://doit.com/expertise) I have the pleasure working with is active within the cybersecurity market. In their activities, they concentrate on Attach Surface Management (ASM) in which discovering a client's digital publicly exposed assets is a key activity. As part of our engagement, we looked at applying the AWS latest technologies to help them on their mission of protecting their clients.
+But before we get distracted, back to the topic of the day: bots and (malicious) internet users. One of our customers at [DoiT](http://doit.com/expertise) I have the pleasure working with is active within the cybersecurity market. In their activities, they concentrate on Attack Surface Management (ASM) in which discovering a client's digital publicly exposed assets is a key activity. As part of our engagement, we looked at applying the AWS latest technologies to help them on their mission of protecting their clients. Having humans manually navigating this vast and dynamic attack surface is an impossible task. This is where autonomous AI agents come in as they can tirelessly explore digital assets, mimicking human researchers but at a machine's scale and speed.
 
-# TLDR;
+# TLDR; 🎯
 
-In this article, I'll walk through how we built a production-ready Attack Surface Management (ASM) agent that can autonomously browse the web to discover and analyze security vulnerabilities. We'll explore:
+In this article, I'll walk through how we built a production-ready Attack Surface Management (ASM) agent that can autonomously browse the web to discover and analyse security vulnerabilities. We'll explore:
 
 - The complete architecture combining **AWS Bedrock**, **Strands Agents**, **Model Context Protocol (MCP)**, and **Bedrock AgentCore**
 - Deep-dive into agent frameworks, reasoning models, and the latest in agentic AI patterns
@@ -79,9 +79,9 @@ The different components making up the whole application are:
 |-----------|------------|-------------|
 | **Foundation Model** | [Amazon Bedrock](https://aws.amazon.com/bedrock) | Managed service providing access to 100s of large language models |
 | **Agent Framework** | [Strands Agents](https://strandsagents.com) | SDK for building and deploying production-ready, multi-agent AI systems |
-| **Tooling** | [Model Context Protocol (MCP)](htpps://modelcontextprotocol.io) | Open protocol for connecting LLMs to external tools and data sources |
-| **Retrieval** | [OpenSearch via Amazon Bedrock Knowledge Base](https://aws.amazon.com/bedrock/knowledge-bases) | Vector database for semantic search and retrieval-augmented generation (RAG) |
-| **Runtime** | [AWS Fargate](https://aws.amazon.com/fargate/), [Amazon Bedrock Agentcore](https://aws.amazon.com/bedrock/agentcore/) | Serverless platform for running (agent) workloads without infrastructure management |
+| **Tooling** | [Model Context Protocol (MCP)](https://modelcontextprotocol.io) | Open protocol for connecting LLMs to external tools and data sources |
+| **Retrieval** | [OpenSearch via Amazon Bedrock Knowledge Base](https://aws.amazon.com/bedrock/knowledge-bases) | Vector store for semantic search and retrieval-augmented generation (RAG) |
+| **Runtime** | [AWS Fargate](https://aws.amazon.com/fargate/), [Amazon Bedrock AgentCore](https://aws.amazon.com/bedrock/agentcore/) | Serverless platform for running (agent) workloads without infrastructure management |
 | **Infrastructure as Code** | [AWS CDK](https://aws.amazon.com/cdk/) | Cloud Development Kit for defining cloud infrastructure using familiar programming languages |
 | **Observability** | [LangFuse](https://langfuse.com/) | Open-source platform for monitoring and evaluating LLM applications |
 
@@ -104,21 +104,21 @@ Protip: checkout my colleagues [article](https://engineering.doit.com/building-a
 
 But without further ado, let's dive one level deeper into each of these components!
 
-# Diving deeper
+# Diving deeper: building blocks 🔍
 
 <!-- We want to build the section around the solution: adding components working back from what we wanted to achieve -->
 
-Let's work our way through the problem working back from what we want to deliver: an LLM driven agent that goes out to a given domain; discover what is exposed, and look at what is prone to an attack.
+Let's work our way through the problem working back from what we want to deliver: an LLM-driven agent that goes out to a given domain, discovers what is exposed, and looks for what is prone to an attack.
 
 ## Agent framework: Strands Agents
 
-I started building with [InlineAgents](https://aws.amazon.com/about-aws/whats-new/2024/11/inlineagents-agents-amazon-bedrock/) which was announced end of 2024. But documentation and support seemed rather thin and burried inside the [samples repo](https://github.com/awslabs/amazon-bedrock-agent-samples/blob/4cd8ad82f2d1e5ba357fd8d53c8fa4afdf7acf74/src/InlineAgent/src/InlineAgent/agent/inline_agent.py#L35) and around the same time the [first version of Strands Agents](https://github.com/strands-agents/sdk-python/releases/tag/v0.1.0) was released. Given it had more documentation and seemingly investment as well, it seemed like the healthier choice. Included in that were clear pathways to deployment and a clear focus on observability and evaluation.
+I started building with [InlineAgents](https://aws.amazon.com/about-aws/whats-new/2024/11/inlineagents-agents-amazon-bedrock/) which was announced end of 2024. But documentation and support seemed rather thin and buried inside the [samples repo](https://github.com/awslabs/amazon-bedrock-agent-samples/blob/4cd8ad82f2d1e5ba357fd8d53c8fa4afdf7acf74/src/InlineAgent/src/InlineAgent/agent/inline_agent.py#L35) and around the same time the [first version of Strands Agents](https://github.com/strands-agents/sdk-python/releases/tag/v0.1.0) was released. Given it had more documentation and seemingly investment as well, it seemed like the healthier choice. Included in that were clear pathways to deployment and a clear focus on observability and evaluation.
 
 In the meantime Strands Agents has evolved beyond the [v1.0](https://aws.amazon.com/blogs/opensource/introducing-strands-agents-1-0-production-ready-multi-agent-orchestration-made-simple/) launch in mid-July and has a flashy website. But it comes with a lot of goodies - I'll highlight a few that jumped out to me in this section and throughout the sections to follow where appropriate.
 
-Like ADK, Strands Agents keeps track of your conversation history through `messages` (`events` in ADK) and maintains `state` (as key-value storage). Persistence is available through `FileSessionManager` and `S3SessionManager` for local or remote storage respectively. ADK provides a similar options through their [`MemoryService`](https://google.github.io/adk-docs/sessions/memory/) with an in-memory and remote implementation.
+Like ADK, Strands Agents keeps track of your conversation history through `messages` (`events` in ADK) and maintains `state` (as key-value storage). Persistence is available through `FileSessionManager` and `S3SessionManager` for local or remote storage respectively. ADK provides similar options through their [`MemoryService`](https://google.github.io/adk-docs/sessions/memory/) with an in-memory and remote implementation.
 
-Something where the two frameworks diverge is tools to do context engineering. As I discussed in the [ADK post](https://matthiasbaetens.com/posts/2025-07-20-adk/#context-engineering-%E2%9A%99%EF%B8%8F), as history grows, managing context becomes increasingly important. While still missing in ADK at the time of writing, Strands Agents comes packed with `SlidingWindowConversationManager` by default which will purge a fixed number of recent message. More interesting though is the `SummarizingConversationManager` which will summarise your context with the help of an LLM and is fully configurable. For the adventurous among us, there's the option to implement an `apply_management` (running at the end of each agent cycle) and `reduce_context` (running when your context window is exceeded) function in your own `ConversationManager`. Head to the [docs](https://strandsagents.com/latest/documentation/docs/user-guide/concepts/agents/conversation-management/#conversation-management) to learn more!
+Something where the two frameworks diverge is tools to do context engineering. As I discussed in the [ADK post](https://matthiasbaetens.com/posts/2025-07-20-adk/#context-engineering-%E2%9A%99%EF%B8%8F), as history grows, managing context becomes increasingly important. While still missing in ADK at the time of writing, Strands Agents comes packed with `SlidingWindowConversationManager` by default which will purge a fixed number of recent messages. More interesting though is the `SummarizingConversationManager` which will summarise your context with the help of an LLM and is fully configurable. For the adventurous among us, there's the option to implement an `apply_management` (running at the end of each agent cycle) and `reduce_context` (running when your context window is exceeded) function in your own `ConversationManager`. Head to the [docs](https://strandsagents.com/latest/documentation/docs/user-guide/concepts/agents/conversation-management/#conversation-management) to learn more!
 
 More customisation is possible in both frameworks through what is called [`hooks`](https://strandsagents.com/latest/documentation/docs/user-guide/concepts/agents/hooks/) in Strands Agents and [`callbacks`](https://google.github.io/adk-docs/callbacks/) in ADK. As we know, an agent is an event-driven system, and essentially, it allows you to plug-in some custom code everytime a certain event takes place. Strands defined slightly more events than ADK: [8](https://strandsagents.com/latest/documentation/docs/user-guide/concepts/agents/hooks/#available-events) vs [6](https://google.github.io/adk-docs/callbacks/#the-callback-mechanism-interception-and-control).
 
@@ -126,15 +126,15 @@ In the multi-agent area, Strands also supports Agent2Agent (A2A) protocol and Ag
 
 > An agent workflow is a structured coordination of tasks across multiple AI agents, where each agent performs specialized functions in a defined sequence or pattern
 
-Seemingly, the documentation talks about a workflow as a sequence of tasks (which in my head would make it an instance of a `Graph`), but later on in the documentation a Workflow Tool gets introduced which looks more like a [dynamic task scheduling system](https://strandsagents.com/latest/documentation/docs/user-guide/concepts/multi-agent/workflow/#quick-start-with-the-workflow-tool). I hope this part [gets cleared up](https://github.com/strands-agents/sdk-python/issues/972) in the documentation soon.
+Seemingly, the documentation talks about a workflow as a sequence of tasks (which in my head would make it an instance of a `Graph`), but later on in the documentation a Workflow Tool gets introduced which looks more like a [dynamic task scheduling system](https://strandsagents.com/latest/documentation/docs/user-guide/concepts/multi-agent/workflow/#quick-start-with-the-workflow-tool). I hope this part [gets clarified](https://github.com/strands-agents/sdk-python/issues/972) in the documentation soon.
 
 Overall, Strands Agents seems a solid choice if your infrastructure is AWS heavy, as pointed out in [AWS own comparison and considerations page](https://docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-frameworks/comparing-agentic-ai-frameworks.html#:~:text=AWS%20infrastructure%20integration,(AWS%20Blog).).
 
-## (Reasoning) models
+## (Reasoning) models 🧠
 
-But before we digress too far from our initial goal, let's talk about the other components of our architecture, starting with the brain of our agent.
+But before we digress too far from our initial goal, let's talk about the other components of our architecture, starting with the brain of our agent. The ability of this brain to "think" or "reason" has evolved rapidly.
 
-As mentioned in my [last post](https://www.youtube.com/watch?v=7xTGNNLPyMI), Andrej Karpathy has a great video on how modern LLM systems are created. While a thorough literature review would have me digress too far again (and I hope to deep-dive on this in another post at some point), I'll give a quick overview of my current understanding.
+As mentioned in my [last post](https://matthiasbaetens.com/posts/2025-07-20-adk/#reasoning-models-and-gemini), Andrej Karpathy has a [great video](https://www.youtube.com/watch?v=7xTGNNLPyMI) on how modern LLM systems are created. While a thorough literature review would have me digress too far again (and I hope to deep-dive on this in another post at some point), I'll give a quick overview of my current understanding.
 
 The first step came when we started prompting LLMs to produce "reasoning traces" before giving an answer, achieving state-of-the-art results: [Chain-of-Thought (CoT) prompting](https://arxiv.org/abs/2201.11903). This technique got taken further with [Tree of Thoughts (ToT)](https://arxiv.org/abs/2305.10601) in which multiple reasoning paths were considered, and [Graph of Thoughts (GoT)](https://arxiv.org/abs/2308.09687), in which reasoning is modelled as a graph in which thoughts are vertices and relations are edges, enabling merging of related thoughts, feedback loops, showing stronger global reasoning and cost reduction. In other work [from Google](https://arxiv.org/abs/2112.00114), LLMs get asked to output intermediary steps (not unlike a scratchpad), or generate multiple reasoning paths after which the most consistent one get chosen by majority vote ([Self-Consistency Improves Chain of Thought Reasoning in Language Models](https://arxiv.org/abs/2203.11171)). [From University of Washington](https://arxiv.org/abs/2210.03350), the model asks itself questions, further improving results.
 
@@ -160,10 +160,11 @@ All of the above (and probably a lot more) enables us to program a simple agent 
       )
 ```
 
-As the attentive reader might have spotted in the above code, I used a variable named `bedrock_model`, which means - YOU MIGHT HAVE GUESS IT - the model I used was hosted on Amazon Bedrock. Strands Agents has a big section on "Model Providers" ranging from the popular closed and open models (OpenAI, Anthropic, MistralAI, Llama API, ...) to tooling to run models locally (llama.cpp, Ollama, ...). Since the customer was already using AWS and Bedrock provides easy access to the state-of-the-art foundation models from leading providers through a unified API, it was a no-brainer to start here.
+As the attentive reader might have spotted in the above code, I used a variable named `bedrock_model`, which means - YOU MIGHT HAVE GUESSED IT - the model I used was hosted on Amazon Bedrock. Strands Agents has a big section on "Model Providers" ranging from the popular closed and open models (OpenAI, Anthropic, MistralAI, Llama API, ...) to tooling to run models locally (llama.cpp, Ollama, ...). Since the customer was already using AWS and Bedrock provides easy access to the state-of-the-art foundation models from leading providers through a unified API, it was a no-brainer to start here.
 
+Now that we have a reasoning brain for our agent, we need to give it hands - the tools it needs to actually interact with the web and gather information.
 
-## Tool use and Model Context Protocol (MCP)
+## Tool use and Model Context Protocol (MCP) 🛠️
 
 While Strands Agents follows a [model-first design](https://docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-frameworks/strands-agents.html#:~:text=following%20key%20features%3A-,Model%2Dfirst%20design,-%E2%80%93%20Built%20around%20the), tools still play a central role in being able to act and in grounding the model as part of fulfilling the agent's goal.
 
@@ -178,15 +179,15 @@ As the documentation points out:
 
 > Language models rely heavily on tool descriptions to determine when and how to use them. Well-crafted descriptions significantly improve tool usage accuracy.
 
-We can inspect such examples by looking at the source code, e.g. for [`retrieve`](https://github.com/strands-agents/tools/blob/b65dd11eb92e513a76ff4a37ed170aefaa664d41/src/strands_tools/retrieve.py#L217) if we need inspiration for our own tools. In the case of using tools through MCP, like we did e.g. for the `filesystem` tools, we need to take a look at the [server implementation](https://github.com/modelcontextprotocol/servers/blob/05b082297cb13818f72b8dd0cd444d48851db5c8/src/filesystem/index.ts#L190). It's always good to take a look to avoid [Tool Poisoning Attacks](https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks)
+We can inspect such examples by looking at the source code, e.g. for [`retrieve`](https://github.com/strands-agents/tools/blob/b65dd11eb92e513a76ff4a37ed170aefaa664d41/src/strands_tools/retrieve.py#L217) if we need inspiration for our own tools. In case of using tools through MCP, like we did e.g. for the `filesystem` tools, we need to take a look at the [server implementation](https://github.com/modelcontextprotocol/servers/blob/05b082297cb13818f72b8dd0cd444d48851db5c8/src/filesystem/index.ts#L190). It's always good to take a look to avoid [Tool Poisoning Attacks](https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks)
 
-Bear in mind that it is best practice to explicitly limit the tools to only the ones you need. All the information (tool description, schema, ...) get passed to the LLM on each invocation, growing your context window. It also avoid letting your agent suddenly start calling tools that were added to the MCP server after you initially defined the agent, leading to potential vulnerabilities. See also Drew Breunig's great article on "How to Fix Your Context", specifically the section about [Tool Loadout](https://www.dbreunig.com/2025/06/26/how-to-fix-your-context.html#tool-loadout)
+Bear in mind that it is best practice to explicitly limit the tools to only the ones you need. All the information (tool description, schema, ...) get passed to the LLM on each invocation, growing your context window. It also avoids letting your agent suddenly start calling tools that were added to the MCP server after you initially defined the agent, leading to potential vulnerabilities. See also Drew Breunig's great article on "How to Fix Your Context", specifically the section about [Tool Loadout](https://www.dbreunig.com/2025/06/26/how-to-fix-your-context.html#tool-loadout)
 
 You are able to specify an [execution strategy for your tools](https://strandsagents.com/latest/documentation/docs/user-guide/concepts/tools/executors/#concurrent-executor) as well: by default, tools get executed in parallel, but that can be changed to sequential.
 
 As you might have spotted, we used two [MCP servers](https://matthiasbaetens.com/posts/2025-07-20-adk/#model-context-protocol-(mcp)) which we'll discuss in the next two subsections. We also used the `retrieve` tool, which we'll discuss in the next section.
 
-### Playwright
+### Playwright �
 
 Microsoft has open sourced an [MCP for Playwright](https://github.com/microsoft/playwright-mcp). When I initially start experimenting for this project, I ran into the [Browser Use](https://browser-use.com) project, and they were using (an adapted version of) Playwright, so I figured it was a good place to start.
 
@@ -206,23 +207,25 @@ all_tools = [retrieve, AgentCoreBrowser().browser]
 
 ### Filesystem
 
-To keep track of pages visited, actions tried, and vulnerabilities found, I decided to use the `filesytem` MCP for filestystem operations that is part of the [modelcontextprotocol](https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem) repo. There are probably more robust solution for state management, but for a first implementation this did the trick. I provided some guidance on where to keep track of state, what to save in our "security findings database" and how to keep track of the state of interactions in the system prompt, as well as a stopping condition.
+To keep track of pages visited, actions tried, and vulnerabilities found, I decided to use the `filesystem` MCP for filesystem operations that is part of the [modelcontextprotocol](https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem) repo. There are probably more robust solutions for state management, but for a first implementation this did the trick. I provided some guidance on where to keep track of state, what to save in our "security findings database" and how to keep track of the state of interactions in the system prompt, as well as a stopping condition.
 
-## Grounding and retrieval-augmented generation (RAG)
+## Grounding and retrieval-augmented generation (RAG) 📚
 
-In order to keep our agent's knowledge up-to-date with the latest and greatest in the security landscape like newly discovered vulnerabilites, we decided to equip it with a database of known vulernabilities. We demonstrated this through grounding the model in the "Common Vulnerabilities and Exposures" database which is open source available in the [CVE Project repository](https://github.com/CVEProject/cvelistV5.git). Through enabling our agent with the `retrieve` tool, we enabled it to rely on external and up-to-date knowledge queried at runtime.
+In order to keep our agent's knowledge up-to-date with the latest and greatest in the security landscape like newly discovered vulnerabilities, we decided to equip it with a database of known vulnerabilities. We demonstrated this through grounding the model in the "Common Vulnerabilities and Exposures" database which is open source available in the [CVE Project repository](https://github.com/CVEProject/cvelistV5.git). Through enabling our agent with the `retrieve` tool, we enabled it to rely on external and up-to-date knowledge queried at runtime.
 
-For this, we leaned on [Amazon Bedrock Knowledge Bases](https://aws.amazon.com/bedrock/knowledge-bases/), a service that helps a lot with the heavy-lifting setting up such worfklows: it takes care of parsing, chunking, and embedding your data, and serves the relevant data to your agent. It's backed by OpenSearch Serverless, Pinecone, Redis, MongoDB, Aurora, as well as the recently announced [S3 Vectors](https://aws.amazon.com/blogs/aws/introducing-amazon-s3-vectors-first-cloud-storage-with-native-vector-support-at-scale/).
+For this, we leaned on [Amazon Bedrock Knowledge Bases](https://aws.amazon.com/bedrock/knowledge-bases/), a service that helps a lot with the heavy-lifting setting up such workflows: it takes care of parsing, chunking, and embedding your data, and serves the relevant data to your agent. It's backed by OpenSearch Serverless, Pinecone, Redis, MongoDB, Aurora, as well as the recently announced [S3 Vectors](https://aws.amazon.com/blogs/aws/introducing-amazon-s3-vectors-first-cloud-storage-with-native-vector-support-at-scale/).
 
-We did some pre-processing to filter out irrelevant vulnerabilities and split the files to cope with the 50MB file size limit - more on that in the [repo](https://github.com/matthiasa4/aws-bedrock-browser-use/tree/main/data/knowledge-base).
+We did some pre-processing to filter out irrelevant vulnerabilities and split the files to cope with Bedrock Knowledge Bases' 50MB file size limit - more on that in the [repo](https://github.com/matthiasa4/aws-bedrock-browser-use/tree/main/data/knowledge-base).
 
-## Productionising the whole thing
+With our agent now capable of accessing knowledge and storing findings, the next challenge was taking it from a local development environment to a production-ready system that could operate reliably at scale.
+
+## Productionising the whole thing 🚀
 
 The teams behind [Amazon Q Developer and AWS Glue](https://aws.amazon.com/blogs/opensource/introducing-strands-agents-1-0-production-ready-multi-agent-orchestration-made-simple/#:~:text=in%20production%20by%20Amazon%20teams%20like%20Amazon%20Q%20Developer%20and%20AWS%20Glue) have been using Strands Agents in production for a while, so why wouldn't we? Let's look at how we brought this whole set-up from local to the cloud.
 
 ### Deployment
 
-For deployment, the options in the documentation are heavily AWS biased (think EC2, EKS, Fargate, Lambda) as also highlighted in the [agent framework comparison](https://docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-frameworks/comparing-agentic-ai-frameworks.html#:~:text=Strands%20Agents-,Strongest,-Strong), but I believe deployment shouldn't be an issue on different clouds with similar offerings (at the end of the day we are just looking for memory and compute cycles). However, we wanted to stay within the AWS ecosystem since that's where our customer is, and for that reason experimented with two of the most scalable and managed solutions on offer: Fargate and Bedrock Agentcore. 
+For deployment, the options in the documentation are heavily AWS biased (think EC2, EKS, Fargate, Lambda) as also highlighted in the [agent framework comparison](https://docs.aws.amazon.com/prescriptive-guidance/latest/agentic-ai-frameworks/comparing-agentic-ai-frameworks.html#:~:text=Strands%20Agents-,Strongest,-Strong), but I believe deployment shouldn't be an issue on different clouds with similar offerings (at the end of the day we are just looking for memory and compute cycles). However, we wanted to stay within the AWS ecosystem since that's where our customer is, and for that reason experimented with two of the most scalable and managed solutions on offer: Fargate and Bedrock AgentCore. 
 
 Fargate is AWS version of "bring your container and forget about servers and scaling", hence you will find a [Dockerfile](https://github.com/matthiasa4/aws-bedrock-browser-use/blob/main/Dockerfile) in the repo. It installs the necessary dependencies, including the MCP servers and browser dependencies. I included a [`docker-compose`](https://github.com/matthiasa4/aws-bedrock-browser-use/blob/main/docker-compose.yml) as well to test locally. Once you're happy, you'll want to push them to ECR ([Elastic Container Registry](https://aws.amazon.com/ecr/)). There is a [`cdk` folder](https://github.com/matthiasa4/aws-bedrock-browser-use/tree/main/cdk) taking care of setting up the necessary infrastructure (think Fargate Service, Load Balancer, VPC, IAM roles etc) and I recommend taking a look at the [README](https://github.com/matthiasa4/aws-bedrock-browser-use/blob/main/cdk/README.md) for more information.
 
@@ -233,7 +236,7 @@ AWS also opensourced a [starter toolkit for AgentCore](https://github.com/aws/be
 A last tip (one that I haven't tried myself but am very keen to): there is an [AWS Bedrock AgentCore MCP Server
 ](https://github.com/awslabs/mcp/tree/main/src/amazon-bedrock-agentcore-mcp-server) - plug this into your vibe coding set-up and your agent will potentially build itself! Jokes aside - it will help you with documentation and best practices in your building journey :)
 
-### Observability and evaluation
+### Observability and evaluation 📊
 
 The Strands Agents documentation has a whole section on observability and evaluation which is great. 
 
@@ -296,15 +299,21 @@ https://aws.github.io/bedrock-agentcore-starter-toolkit/user-guide/observability
 
 This way, everything (logs, metrics, and traces) are neatly stored in CloudWatch and you just need to keep an eye out on the [Generative AI observability](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/GenAI-observability.html) page!
 
-# Conclusion and future work
+# Conclusion and future work 🎬
 
-We've come a long way from those staggering internet statistics - 1.25 billion websites, 149 zettabytes of data, and 51% bot traffic - to building our own intelligent agent that can actually navigate and analyze the web for security vulnerabilities.
+## Conclusion
 
-In this post, we built a production-ready Attack Surface Management agent using AWS Bedrock and Strands Agents. We walked through the complete architecture: from choosing an agent framework and understanding the latest in reasoning models, to implementing browser automation through MCP and grounding our agent with a knowledge base of CVEs. We then took it all the way to production with AWS Fargate and AgentCore, complete with proper observability through Langfuse and CloudWatch - and sprinkled with some comparison to ADK along the way.
+We've come a long way from those staggering internet statistics to building our own intelligent agent that can navigate and analyze the web for security vulnerabilities. In this post, we built a production-ready Attack Surface Management agent using AWS Bedrock and Strands Agents, taking it from concept to a cloud-native deployment.
+
+We walked through the complete architecture: from choosing an agent framework and understanding the latest in reasoning models, to implementing browser automation and grounding our agent with a knowledge base of CVEs. We then took it all the way to production with AWS Fargate and AgentCore, complete with proper observability through Langfuse and CloudWatch and sprinkled with some comparisons to ADK along the way.
+
+When we unleashed our agent on `testphp.vulnweb.com`, a website designed to be vulnerable, it autonomously discovered and exploited several critical security flaws. Amongst others, it successfully performed a **SQL injection** to bypass the login, found and demonstrated both **reflected and stored Cross-Site Scripting (XSS)** vulnerabilities, and even identified that the site had been compromised and was redirecting to a defacement page. This test run proved that the agent can not only discover potential attack vectors but also validate them, providing concrete evidence of real-world risks.
+
+## Future work
 
 While the agent works, there's still plenty of room for improvement that I would like to work on next:
 - Proper **context window management**: right now we're relying on Strands' built-in `SlidingWindowConversationManager`, but for our use-case we don't want to rely on the context window to keep track of what has been done, what needs to be done, and the intermediate findings. Instead... 
-- We should design a **better state management** system: using the filesystem MCP (and later internal agent state) was a quick way to get started, but it's far from ideal. A proper state management solution would enable better tracking and documentation of findings.
-- **Proper evaluation**: Right now, we're flying somewhat blind without a systematic evaluation framework. Building a proper test suite with known vulnerabilities, establishing baseline metrics, and implementing the evaluation approaches discussed in the Strands documentation would give us confidence that each iteration actually improves the agent's capabilities. Since this is a very domain-heavy exercise, I'll probably need to find some strong collaborators for that :)
+- We should design a **better state management** system: using the filesystem MCP (and later internal agent state) served as a quick prototype, but a production system demands better. A dedicated state management solution would enable more reliable tracking and comprehensive documentation of security findings.
+- **Proper evaluation**: Right now, we're flying somewhat blind without a systematic evaluation framework. Building a test suite with known vulnerabilities, establishing baseline metrics, and implementing the evaluation approaches discussed in the Strands documentation would give us confidence that each iteration actually improves the agent's capabilities. Since this is a very domain-heavy exercise, I'll probably need to find some strong collaborators for that :)
 
 The code for everything we discussed is available on [GitHub](https://github.com/matthiasa4/aws-bedrock-browser-use) and in the meantime, Amazon Bedrock [AgentCore went GA](https://aws.amazon.com/blogs/machine-learning/amazon-bedrock-agentcore-is-now-generally-available/) as well, making it ready for your production use cases! Feel free to experiment, improve, and share what you build!
