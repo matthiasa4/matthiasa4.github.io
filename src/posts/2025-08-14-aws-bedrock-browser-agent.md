@@ -9,6 +9,22 @@ description:
 
 Ever wondered how "much" internet we have? While (as usually) the answer depends on "how do you want to measure it", according to [Netcraft](https://www.netcraft.com/blog/june-2025-web-server-survey) we have about 1.25 billion websites (June 2025). Statista estimates that we created, consumed and stored [149 zettabytes in 2024](https://www.statista.com/statistics/871513/worldwide-data-created/). That's 149 sextillion bytes (149,000,000,000,000,000,000,000 bytes), 149 000 exabytes or 149 billion terabytes. **A. lot. of. data.**
 
+Full table of contents:
+- [TLDR;](#tldr)
+- [What we built](#what-we-built)
+  - [The complete tech stack](#the-complete-tech-stack)
+- [Diving deeper](#diving-deeper)
+  - [Agent framework: Strands Agents](#agent-framework-strands-agents)
+  - [(Reasoning) models](#reasoning-models)
+  - [Tool use and Model Context Protocol (MCP)](#tool-use-and-model-context-protocol-(mcp))
+    - [Playwright](#playwright)
+    - [Filesystem](#filesystem)
+  - [Grounding and retrieval-augmented generation (RAG)](#grounding-and-retrieval-augmented-generation-(rag))
+  - [Productionising the whole thing](#productionising-the-whole-thing)
+    - [Deployment](#deployment)
+    - [Observability and evaluation](#observability-and-evaluation)
+- [Conclusion and future work](#conclusion-and-future-work)
+
 How much of that data is consumed by us, the flesh and blood human, you ask? Well, since 2024, you'll be happy to hear, less than half! Bot traffic accounted for 51% of all web traffic, according to [2025's Imperva Bad Bot Report](https://www.thalesgroup.com/en/worldwide/defence-and-security/press_release/artificial-intelligence-fuels-rise-hard-detect-bots). Out of this 51%, 37% are malicious bots.
 
 And how does the internet consume "us", humans? According to the [Digital 2025 flagship report](https://datareportal.com/reports/digital-2025-global-overview-report), the average user spends 6 hours and 38 minutes on the internet each day. Combining that with 5.56 billion people on this planet (see [page 52](https://indd.adobe.com/view/9d9a68f6-38a9-4278-b61c-4506b24240b0?startpage=52)), that means over 36 billion human‑hours/day. **A. lot. of. time.**
@@ -18,6 +34,19 @@ And how does the internet consume "us", humans? According to the [Digital 2025 f
 </div>
 
 But before we get distracted, back to the topic of the day: bots and (malicious) internet users. One of our customers at [DoiT](http://doit.com/expertise) I have the pleasure working with is active within the cybersecurity market. In their activities, they concentrate on Attach Surface Management (ASM) in which discovering a client's digital publicly exposed assets is a key activity. As part of our engagement, we looked at applying the AWS latest technologies to help them on their mission of protecting their clients.
+
+# TLDR;
+
+In this article, I'll walk through how we built a production-ready Attack Surface Management (ASM) agent that can autonomously browse the web to discover and analyze security vulnerabilities. We'll explore:
+
+- The complete architecture combining **AWS Bedrock**, **Strands Agents**, **Model Context Protocol (MCP)**, and **Bedrock AgentCore**
+- Deep-dive into agent frameworks, reasoning models, and the latest in agentic AI patterns
+- How to equip agents with tools (browser automation via Playwright/AgentCore, filesystem operations via MCP)
+- Grounding your agent with external knowledge using **Bedrock Knowledge Bases** and the **CVE database**
+- Deploying to production with **AWS Fargate** and the new managed **Bedrock AgentCore** runtime
+- Observability and monitoring through **Langfuse** and **CloudWatch**
+
+The code is available on [GitHub](https://github.com/matthiasa4/aws-bedrock-browser-use).
 
 # What we built
 
@@ -165,7 +194,7 @@ But why not simple `cURLs` you ask. When we use a full browser, we get the full 
 
 It comes with the option to browse headed, which is great during the initial development to see how your agent is behaving. Once we gained some confidence and are ready to deploy to production, a headless configuration might suffice.
 
-At the start of August however, [AWS announced Amazon Bedrock AgentCore Browser Tool](https://aws.amazon.com/blogs/machine-learning/introducing-amazon-bedrock-agentcore-browser-tool), making my life even easier. It provides a zero-management browser solution, that can scale easily, runs in an isolated environment (which wasn't the case in my first architecture), and integration with several AWS services like IAM, CloudTrail, and CloudWatch for access management, tracking, and monitoring. Lucky enough, I was able to update the code to use this with minimal changes:
+At the start of August however, [AWS announced Amazon Bedrock AgentCore](https://aws.amazon.com/blogs/aws/introducing-amazon-bedrock-agentcore-securely-deploy-and-operate-ai-agents-at-any-scale/) which comes with its own [Browser Tool](https://aws.amazon.com/blogs/machine-learning/introducing-amazon-bedrock-agentcore-browser-tool), making my life even easier. It provides a zero-management browser solution, that can scale easily, runs in an isolated environment (which wasn't the case in my first architecture), and integration with several AWS services like IAM, CloudTrail, and CloudWatch for access management, tracking, and monitoring. Lucky enough, I was able to update the code to use this with minimal changes:
 
 ```python
 # importing the new tool
@@ -278,4 +307,4 @@ While the agent works, there's still plenty of room for improvement that I would
 - We should design a **better state management** system: using the filesystem MCP (and later internal agent state) was a quick way to get started, but it's far from ideal. A proper state management solution would enable better tracking and documentation of findings.
 - **Proper evaluation**: Right now, we're flying somewhat blind without a systematic evaluation framework. Building a proper test suite with known vulnerabilities, establishing baseline metrics, and implementing the evaluation approaches discussed in the Strands documentation would give us confidence that each iteration actually improves the agent's capabilities. Since this is a very domain-heavy exercise, I'll probably need to find some strong collaborators for that :)
 
-The code for everything we discussed is available on [GitHub](https://github.com/matthiasa4/aws-bedrock-browser-use). Feel free to experiment, improve, and share what you build!
+The code for everything we discussed is available on [GitHub](https://github.com/matthiasa4/aws-bedrock-browser-use) and in the meantime, Amazon Bedrock [AgentCore went GA](https://aws.amazon.com/blogs/machine-learning/amazon-bedrock-agentcore-is-now-generally-available/) as well, making it ready for your production use cases! Feel free to experiment, improve, and share what you build!
