@@ -262,7 +262,7 @@ All of these happened because of the preparation work I put in before heading to
 While there, I learned some rather curious facts about these pristine white beaches. Turns out, we're basically lounging on a natural graveyard x fish toilet! 💀💩 A good chunk of the sand is actually [parrotfish poo](https://www.nhm.ac.uk/discover/parrotfish-and-sand.html). These colorful fish munch on coral algae, inadvertently ingesting bits of coral and then excrete fine sand particles (some large parrotfish produce up to 100 kg of sand per year - an estimated [70% of the sand on your favourite white sandy beach in Caribbean and Hawaii is probably made up of poo](https://manoa.hawaii.edu/exploringourfluidearth/physical/coastal-interactions/beaches-and-sand/weird-science-parrotfish-and-sand)!). 
 
 <div style="text-align: center;">
-  <img src="https://d1oqwsnd25kjn6.cloudfront.net/production/files/199577/original/parrotfish_poop.gif" alt="Parrotfish supplying your beach of new sand.">
+  <img src="/images/2024-08-25-marine-conservation-in-okinawa/parrotfish_poop.gif" alt="Parrotfish supplying your beach of new sand.">
 </div>
 
 
