@@ -8,6 +8,8 @@ tags:
 description: 236 days or almost 8 months. I guess I kept my "More coming (probably not so) soon" promise. 
 ---
 
+${toc}
+
 236 days or almost 8 months. I guess I kept my "More coming (probably not so) soon" promise.
 
 <div class="swiper-container">

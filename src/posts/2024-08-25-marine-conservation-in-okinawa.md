@@ -10,6 +10,8 @@ tags:
   - environment
 ---
 
+${toc}
+
 In the past weeks, I have spent some time around the beautiful islands in Okinawa, Japan’s 🇯🇵 most southern prefecture. This post shares my experiences in finding and participating in marine conservation efforts across these islands, under the mantra: “take only photos, leave only bubbles” 🫧. But before we dive in, a bit of my personal history and what brought us to this day…
 
 (don't care about the story, just want to know about how you can help out? I GOT YOU COVERED: <a href="#marine-conservation-in-okinawa">click here to skip to the next section</a>)

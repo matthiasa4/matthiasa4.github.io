@@ -1,6 +1,8 @@
 module.exports = async function (eleventyConfig) {
   // Dynamically import the ES module
   const { default: Shiki } = await import("@shikijs/markdown-it");
+  const markdownItAnchor = require("markdown-it-anchor");
+  const markdownItToc = require("markdown-it-toc-done-right");
   
   // Add Shiki syntax highlighting plugin
   const shiki = await Shiki({
@@ -23,6 +25,19 @@ module.exports = async function (eleventyConfig) {
   
   eleventyConfig.amendLibrary("md", (mdLib) => {
     mdLib.use(shiki);
+    mdLib.use(markdownItAnchor, {
+      permalink: markdownItAnchor.permalink.headerLink({
+        safariReaderFix: true,
+        symbol: '#',
+        class: 'header-anchor'
+      })
+    });
+    mdLib.use(markdownItToc, {
+      containerClass: "table-of-contents",
+      listClass: "toc-content",
+      listType: "ul",
+      level: [1, 2, 3, 4, 5, 6]
+    });
   });
 
   // Copy the `css` directory to the output
@@ -52,6 +67,17 @@ module.exports = async function (eleventyConfig) {
   // Add an ISO date filter
   eleventyConfig.addFilter("dateIso", (date) => {
     return date.toISOString();
+  });
+
+  // Add a filter to extract TOC
+  eleventyConfig.addFilter("extractToc", function(content) {
+    const tocMatch = content.match(/<nav class="table-of-contents">[\s\S]*?<\/nav>/);
+    return tocMatch ? tocMatch[0] : '';
+  });
+
+  // Add a filter to remove TOC from content
+  eleventyConfig.addFilter("removeToc", function(content) {
+    return content.replace(/<nav class="table-of-contents">[\s\S]*?<\/nav>/, '');
   });
 
   // Create a collection for posts

@@ -11,10 +11,30 @@ layout: layouts/base.njk
 <meta property="og:url" content="{{ site.url }}{{ page.url }}">
 {% endblock %}
 
-<article>
-    <h1>{{ title }}</h1>
-    <time datetime="{{ page.date | dateIso }}">{{ page.date | dateReadable }}</time>
-    <div class="post-content">
-        {{ content | safe }}
-    </div>
-</article>
+{% set processedContent = content | safe %}
+{% set tocContent = processedContent | extractToc %}
+{% set mainContent = processedContent | removeToc %}
+
+<div class="post-layout">
+    <!-- TOC on right (desktop) / top (mobile) -->
+    {% if tocContent %}
+    <aside class="toc-wrapper">
+        <nav class="toc-nav">
+            <h2 class="toc-title">Table of Contents</h2>
+            {{ tocContent | safe }}
+        </nav>
+    </aside>
+    {% endif %}
+    
+    <!-- Main content -->
+    <article class="post-container">
+        <div class="post-header">
+            <h1>{{ title }}</h1>
+            <time datetime="{{ page.date | dateIso }}">{{ page.date | dateReadable }}</time>
+        </div>
+        
+        <div class="post-content">
+            {{ mainContent | safe }}
+        </div>
+    </article>
+</div>

@@ -7,6 +7,8 @@ title: "Browse to Break: Productionizing Agentic ASM on AWS with Bedrock & Stran
 description: "In this post we deep dive into the design and deployment of an Attack Surface Management agent built on Strands Agents, Amazon Bedrock, AgentCore, and Knowledge Bases"
 ---
 
+${toc}
+
 Ever wondered how "much" internet we have? While (as usually) the answer depends on "how do you want to measure it", according to [Netcraft](https://www.netcraft.com/blog/june-2025-web-server-survey) we have about 1.25 billion websites (June 2025). Statista estimates that we created, consumed and stored [149 zettabytes in 2024](https://www.statista.com/statistics/871513/worldwide-data-created/). That's 149 sextillion bytes (149,000,000,000,000,000,000,000 bytes), 149 000 exabytes or 149 billion terabytes. **A. lot. of. data.**
 
 Full table of contents:

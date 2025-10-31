@@ -660,3 +660,215 @@ blockquote.twitter-tweet::before {
     font-size: 2rem;
     left: 0.5rem;
   }
+}
+
+/* ===== Floating Table of Contents Styles ===== */
+
+/* Main layout using flexbox - wraps both TOC and article */
+.post-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 100%;
+}
+
+/* TOC wrapper - appears first on mobile */
+.toc-wrapper {
+  order: 1;
+  width: 100%;
+}
+
+/* Container for the article (now nested inside post-layout) */
+.post-container {
+  order: 2;
+  max-width: 100%;
+  margin: 0;
+}
+
+.post-header {
+  margin-bottom: 2rem;
+}
+
+.post-header h1 {
+  margin-bottom: 0.5rem;
+}
+
+.post-header time {
+  color: var(--main-color);
+  opacity: 0.8;
+  font-size: 0.95rem;
+}
+
+/* Main content area */
+.post-content {
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* TOC navigation styles - match article box styling */
+.toc-nav {
+  background-color: #ffffff;
+  border: 1px solid var(--dark-grey);
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.toc-title {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: var(--main-color);
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 0.5rem;
+}
+
+/* Style the generated TOC list and table-of-contents wrapper */
+.toc-content,
+.table-of-contents,
+.table-of-contents > ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  display: block;
+}
+
+.toc-content li,
+.table-of-contents li {
+  margin: 0.4rem 0;
+  line-height: 1.5;
+  display: block;
+  width: 100%;
+}
+
+.toc-content a,
+.table-of-contents a {
+  color: var(--main-color);
+  text-decoration: none;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+  display: block;
+  padding: 0.25rem 0;
+}
+
+.toc-content a:hover,
+.table-of-contents a:hover {
+  color: var(--accent-color);
+  padding-left: 0.5rem;
+}
+
+/* Hierarchical nested list items - clear indentation for each level */
+.table-of-contents ul ul {
+  list-style: none;
+  padding-left: 1.5rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+  display: block;
+}
+
+/* Further nested levels - increasing indentation */
+.table-of-contents ul ul ul {
+  padding-left: 1.5rem;
+  display: block;
+}
+
+.table-of-contents ul ul ul ul {
+  padding-left: 1.5rem;
+  display: block;
+}
+
+.table-of-contents ul ul ul ul ul {
+  padding-left: 1.5rem;
+  display: block;
+}
+
+/* Keep consistent font sizes with slight decrease for deeper levels */
+.table-of-contents li li {
+  font-size: 0.95rem;
+}
+
+.table-of-contents li li li {
+  font-size: 0.92rem;
+}
+
+.table-of-contents li li li li {
+  font-size: 0.9rem;
+}
+
+.table-of-contents li li li li li {
+  font-size: 0.88rem;
+}
+
+/* Legacy support for toc-content class */
+.toc-content ul {
+  list-style: none;
+  padding-left: 1.2rem;
+  margin-top: 0.25rem;
+}
+
+.toc-content ul li {
+  font-size: 0.95rem;
+  margin: 0.25rem 0;
+}
+
+/* Desktop layout - side by side with sticky TOC */
+@media (min-width: 1024px) {
+  .post-layout {
+    flex-direction: row;
+    gap: 3rem;
+  }
+  
+  /* TOC appears on right side on desktop */
+  .toc-wrapper {
+    order: 2;
+    width: 280px;
+    flex-shrink: 0;
+  }
+  
+  /* Article container takes up remaining space */
+  .post-container {
+    order: 1;
+    flex: 1;
+    max-width: 700px;
+  }
+  
+  /* Sticky positioning for TOC */
+  .toc-nav {
+    position: sticky;
+    top: 2rem;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+  }
+  
+  /* Custom scrollbar for TOC */
+  .toc-nav::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .toc-nav::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .toc-nav::-webkit-scrollbar-thumb {
+    background: var(--main-color);
+    border-radius: 3px;
+  }
+  
+  .toc-nav::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
+  }
+}
+
+/* Extra large screens - more breathing room */
+@media (min-width: 1280px) {
+  .post-layout {
+    gap: 4rem;
+  }
+  
+  .toc-wrapper {
+    width: 320px;
+  }
+  
+  .post-container {
+    max-width: 800px;
+  }
+}

@@ -11,14 +11,16 @@
     "keywords": [],
     "author": "Matthias Baetens",
     "license": "ISC",
-        "engines": {
-            "node": ">=18"
-        },
+    "engines": {
+        "node": ">=18"
+    },
     "devDependencies": {
         "@11ty/eleventy": "^3.0.0"
     },
     "dependencies": {
+        "@shikijs/markdown-it": "^3.14.0",
         "markdown-it-anchor": "^9.2.0",
+        "markdown-it-toc-done-right": "^4.2.0",
         "swiper": "^11.1.14"
     }
 }
