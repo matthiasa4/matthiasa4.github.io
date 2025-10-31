@@ -1,6 +1,7 @@
-const Shiki = require("@shikijs/markdown-it").default || require("@shikijs/markdown-it");
-
 module.exports = async function (eleventyConfig) {
+  // Dynamically import the ES module
+  const { default: Shiki } = await import("@shikijs/markdown-it");
+  
   // Add Shiki syntax highlighting plugin
   const shiki = await Shiki({
     theme: "github-light",
