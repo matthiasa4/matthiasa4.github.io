@@ -17,7 +17,7 @@ Full table of contents:
   - [Agent framework: Strands Agents](#agent-framework-strands-agents)
   - [(Reasoning) models](#(reasoning)-models-🧠)
   - [Tool use and Model Context Protocol (MCP)](#tool-use-and-model-context-protocol-(mcp)-🛠️)
-    - [Playwright](#playwright-�)
+    - [Playwright](#playwright)
     - [Filesystem](#filesystem)
   - [Grounding and retrieval-augmented generation (RAG)](#grounding-and-retrieval-augmented-generation-(rag)-📚)
   - [Productionising the whole thing](#productionising-the-whole-thing-🚀)
@@ -189,7 +189,7 @@ You are able to specify an [execution strategy for your tools](https://strandsag
 
 As you might have spotted, we used two [MCP servers](https://matthiasbaetens.com/posts/2025-07-20-adk/#model-context-protocol-(mcp)) which we'll discuss in the next two subsections. We also used the `retrieve` tool, which we'll discuss in the next section.
 
-### Playwright �
+### Playwright
 
 Microsoft has open sourced an [MCP for Playwright](https://github.com/microsoft/playwright-mcp). When I initially start experimenting for this project, I ran into the [Browser Use](https://browser-use.com) project, and they were using (an adapted version of) Playwright, so I figured it was a good place to start.
 
