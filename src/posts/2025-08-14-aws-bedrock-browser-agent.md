@@ -60,17 +60,10 @@ We looked at Agent definitions in [my previous blogpost](https://matthiasbaetens
 
 A bit more wordy, but the essence remains the same. In our case the flow looked something like this:
 
-<div class="swiper-container">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide">
-      <img src="/images/2025-08-14-aws-bedrock-browser-agents/agentic-loop.svg">
-    </div>
-  </div>
-  <!-- Add pagination -->
-  <div class="swiper-pagination"></div>
-  <!-- Add navigation arrows -->
-  <div class="swiper-button-next"></div>
-  <div class="swiper-button-prev"></div>
+<div style="text-align: center;">
+  <img src="/images/2025-08-14-aws-bedrock-browser-agents/agentic-loop.svg" 
+       alt="Architecture diagram" 
+       style="max-width: 100%; height: auto;">
 </div>
 
 In this post, I'll explore how we helped our customer with an AI agent that can actually browse the web, look at the architecture needed for doing so on AWS, take a closer look at Strands Agents (and do some comparisons with ADK here and there), and how to deploy all of this to production.
@@ -91,17 +84,10 @@ The different components making up the whole application are:
 
 But what would a good blogpost be without a nice architecture diagram?
 
-<div class="swiper-container">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide">
-      <img src="/images/2025-08-14-aws-bedrock-browser-agents/bedrock_browser_agent_architecture.png">
-    </div>
-  </div>
-  <!-- Add pagination -->
-  <div class="swiper-pagination"></div>
-  <!-- Add navigation arrows -->
-  <div class="swiper-button-next"></div>
-  <div class="swiper-button-prev"></div>
+<div style="text-align: center;">
+  <img src="/images/2025-08-14-aws-bedrock-browser-agents/bedrock_browser_agent_architecture.png" 
+       alt="Architecture diagram" 
+       style="max-width: 100%; height: auto;">
 </div>
 
 Protip: checkout my colleagues [article](https://engineering.doit.com/building-aws-architecture-with-mcp-servers-and-strands-agents-e53bd163962f) on using Strands and MCP to generate your diagram!
@@ -250,17 +236,10 @@ Lastly, it includes a discussion about why investing in telemetry makes sense: o
 
 In the first iteration, I integrated my agent with the observability platform offered by [Langfuse](https://langfuse.com/). The set-up is _super_ easy: just create an account and plug-in a few environment variables and you will start seeing traces appear in the platform. What you get is _super_ helpful:
 
-<div class="swiper-container">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide">
-      <img src="/images/2025-08-14-aws-bedrock-browser-agents/langfuse.png">
-    </div>
-  </div>
-  <!-- Add pagination -->
-  <div class="swiper-pagination"></div>
-  <!-- Add navigation arrows -->
-  <div class="swiper-button-next"></div>
-  <div class="swiper-button-prev"></div>
+<div style="text-align: center;">
+  <img src="/images/2025-08-14-aws-bedrock-browser-agents/langfuse.png" 
+       alt="Langfuse observability platform" 
+       style="max-width: 100%; height: auto;">
 </div>
 
 1. All the loops your agent does while trying to reach it's goal
@@ -272,33 +251,19 @@ It also includes latencies for each of the steps in case you want to optimise ce
 
 One thing I was missing is the full prompt (as we discussed above, not only user input gets passed to the LLM, but also the system prompt and tool descriptions). For that, I can recommend turning on [Bedrock Model Invocation logging](https://docs.aws.amazon.com/bedrock/latest/userguide/model-invocation-logging.html) which showed me the whole context, including `messages`, `system`, `toolConfig` with different `toolSpec`s: 
 
-<div class="swiper-container">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide">
-      <img src="/images/2025-08-14-aws-bedrock-browser-agents/model-invocation-logging.png">
-    </div>
-  </div>
-  <!-- Add pagination -->
-  <div class="swiper-pagination"></div>
-  <!-- Add navigation arrows -->
-  <div class="swiper-button-next"></div>
-  <div class="swiper-button-prev"></div>
+<div style="text-align: center;">
+  <img src="/images/2025-08-14-aws-bedrock-browser-agents/model-invocation-logging.png" 
+       alt="Bedrock Model Invocation logging" 
+       style="max-width: 100%; height: auto;">
 </div>
 
 That being said, with the launch of AgentCore, we got another set of options, baked straight into AWS through AgentCore Observability. The [AgentCore docs](
 https://aws.github.io/bedrock-agentcore-starter-toolkit/user-guide/observability/quickstart.html) have a great quickstart guide and the steps are quite trivial, so if you prefer to consolidate everything into AWS and avoid external integrations, this is definitely the way to go! It looks something like this:
 
-<div class="swiper-container">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide">
-      <img src="/images/2025-08-14-aws-bedrock-browser-agents/aws-cloudwatch.jpg">
-    </div>
-  </div>
-  <!-- Add pagination -->
-  <div class="swiper-pagination"></div>
-  <!-- Add navigation arrows -->
-  <div class="swiper-button-next"></div>
-  <div class="swiper-button-prev"></div>
+<div style="text-align: center;">
+  <img src="/images/2025-08-14-aws-bedrock-browser-agents/aws-cloudwatch.jpg" 
+       alt="AWS CloudWatch observability" 
+       style="max-width: 100%; height: auto;">
 </div>
 
 This way, everything (logs, metrics, and traces) are neatly stored in CloudWatch and you just need to keep an eye out on the [Generative AI observability](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/GenAI-observability.html) page!

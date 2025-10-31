@@ -12,18 +12,10 @@ ${toc}
 
 236 days or almost 8 months. I guess I kept my "More coming (probably not so) soon" promise.
 
-<div class="swiper-container">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide">
-      <img src="/images/2025-04-19-langwhatnot/intro/coming_soon.png">
-      <div class="caption">Only 7 months of distraction and procrastination.</div>
-    </div>
-  </div>
-  <!-- Add pagination -->
-  <div class="swiper-pagination"></div>
-  <!-- Add navigation arrows -->
-  <div class="swiper-button-next"></div>
-  <div class="swiper-button-prev"></div>
+<div style="text-align: center;">
+  <img src="/images/2025-04-19-langwhatnot/intro/coming_soon.png" 
+       alt="Only 7 months of distraction and procrastination" 
+       style="max-width: 100%; height: auto;">
 </div>
 
 
@@ -33,34 +25,18 @@ If your last 7 months were a bit more productive and you did me the honour to re
 
 The attentive reader might've noticed I wrote verbose captions for every picture, even with some attempts at trying to be funny. 
 
-<div class="swiper-container">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide">
-      <img src="/images/2025-04-19-langwhatnot/intro/captions_start.png">
-      <div class="caption">Ambitious (caption) start.</div>
-    </div>
-  </div>
-  <!-- Add pagination -->
-  <div class="swiper-pagination"></div>
-  <!-- Add navigation arrows -->
-  <div class="swiper-button-next"></div>
-  <div class="swiper-button-prev"></div>
+<div style="text-align: center;">
+  <img src="/images/2025-04-19-langwhatnot/intro/captions_start.png" 
+       alt="Ambitious (caption) start" 
+       style="max-width: 100%; height: auto;">
 </div>
 
 Not too much later, towards the end of the blogpost, things started turning to the rather... "lazy"? side.
 
-<div class="swiper-container">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide">
-      <img src="/images/2025-04-19-langwhatnot/intro/captions_end.png">
-      <div class="caption">Turning to laziness not too much after...</div>
-    </div>
-  </div>
-  <!-- Add pagination -->
-  <div class="swiper-pagination"></div>
-  <!-- Add navigation arrows -->
-  <div class="swiper-button-next"></div>
-  <div class="swiper-button-prev"></div>
+<div style="text-align: center;">
+  <img src="/images/2025-04-19-langwhatnot/intro/captions_end.png" 
+       alt="Turning to laziness not too much after" 
+       style="max-width: 100%; height: auto;">
 </div>
 
 Since I was in the middle of trying to understand the Gen AI hype, I decided to kick the tyres and build something that could help automate my laziness away... But before we start prompting, a bit of background on my Gen AI journey.
@@ -350,18 +326,10 @@ These might all be a bit outdated by now, and I need to desperately update my re
 
 And by now, I know Sam Altman was right: "I don't know what happens next"... but at least I managed to generate some captions for my blogpost. Onto the techy stuff!
 
-<div class="swiper-container">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide">
-      <img src="/images/2025-04-19-langwhatnot/the-ugly/sa-next.png">
-      <div class="caption">Who knows what's next?</div>
-    </div>
-  </div>
-  <!-- Add pagination -->
-  <div class="swiper-pagination"></div>
-  <!-- Add navigation arrows -->
-  <div class="swiper-button-next"></div>
-  <div class="swiper-button-prev"></div>
+<div style="text-align: center;">
+  <img src="/images/2025-04-19-langwhatnot/the-ugly/sa-next.png" 
+       alt="Who knows what's next?" 
+       style="max-width: 100%; height: auto;">
 </div>
 
 
@@ -434,17 +402,11 @@ So what exactly did we see in the demo? Let's look at the different steps:
 ## LangGraph
 
 This seems like the perfect time to introduce [LangGraph](https://www.langchain.com/langgraph). Some of you might have spotted it while watching the demo, but these steps perfectly fit a _directed graph_:
-<div class="swiper-container">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide">
-      <img src="/images/2025-04-19-langwhatnot/the-tech/langgraph-graph.png">
-    </div>
-  </div>
-  <!-- Add pagination -->
-  <div class="swiper-pagination"></div>
-  <!-- Add navigation arrows -->
-  <div class="swiper-button-next"></div>
-  <div class="swiper-button-prev"></div>
+
+<div style="text-align: center;">
+  <img src="/images/2025-04-19-langwhatnot/the-tech/langgraph-graph.png" 
+       alt="LangGraph directed graph" 
+       style="max-width: 100%; height: auto;">
 </div>
 
 Without going too deep into graph theory, a graph consists of nodes and edges. The nodes control _what_ happens and are basically tasks or functions while the _edges_ control the flow of possible next steps. While LangChain was mostly supporting DAGs (Directed Acyclic Graphs), [LangGraph introduces cycles and conditional branches](https://blog.langchain.dev/langgraph/#:~:text=These%20are%20where%20a%20function,to%20pass%20in%20three%20things), paramount to agentic behaviour (or, in our case, putting a [human-in-the-loop](https://langchain-ai.github.io/langgraph/concepts/human_in_the_loop/)).
