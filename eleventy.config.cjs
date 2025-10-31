@@ -1,17 +1,28 @@
-const markdownItAnchor = require("markdown-it-anchor");
+const Shiki = require("@shikijs/markdown-it").default || require("@shikijs/markdown-it");
 
-module.exports = function (eleventyConfig) {
-  // Configure markdown-it with anchor plugin
-  let markdownIt = require("markdown-it");
-  let markdownLib = markdownIt({
-    html: true,
-  }).use(markdownItAnchor, {
-    permalink: markdownItAnchor.permalink.ariaHidden({
-      placement: 'after'
-    })
+module.exports = async function (eleventyConfig) {
+  // Add Shiki syntax highlighting plugin
+  const shiki = await Shiki({
+    theme: "github-light",
+    transformers: [
+      {
+        name: 'add-language-label',
+        pre(node) {
+          const lang = this.options.lang || 'text';
+          node.properties['data-language'] = lang;
+          this.addClassToHast(node, 'has-language-label');
+        },
+        line(node, line) {
+          node.properties['data-line'] = line;
+          this.addClassToHast(node, 'line');
+        }
+      }
+    ]
   });
   
-  eleventyConfig.setLibrary("md", markdownLib);
+  eleventyConfig.amendLibrary("md", (mdLib) => {
+    mdLib.use(shiki);
+  });
 
   // Copy the `css` directory to the output
   eleventyConfig.addPassthroughCopy("src/css");
@@ -25,16 +36,20 @@ module.exports = function (eleventyConfig) {
   // Add Swiper CSS and JS files
   eleventyConfig.addPassthroughCopy({
     "node_modules/swiper/swiper-bundle.min.css": "css/swiper-bundle.min.css",
-    "node_modules/swiper/swiper-bundle.min.js": "js/swiper-bundle.min.js"
+    "node_modules/swiper/swiper-bundle.min.js": "js/swiper-bundle.min.js",
   });
 
   // Add a readable date filter
-  eleventyConfig.addFilter("dateReadable", dateObj => {
-    return dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+  eleventyConfig.addFilter("dateReadable", (dateObj) => {
+    return dateObj.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
   });
 
   // Add an ISO date filter
-  eleventyConfig.addFilter("dateIso", date => {
+  eleventyConfig.addFilter("dateIso", (date) => {
     return date.toISOString();
   });
 
@@ -48,7 +63,7 @@ module.exports = function (eleventyConfig) {
     dir: {
       input: "src",
       output: "_site",
-      includes: "_includes"
-    }
+      includes: "_includes",
+    },
   };
 };
