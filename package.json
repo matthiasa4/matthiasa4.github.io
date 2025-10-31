@@ -5,13 +5,17 @@
     "main": "index.js",
     "scripts": {
         "build": "eleventy",
-        "serve": "eleventy --serve"
+        "serve": "eleventy --serve",
+        "clean": "rm -rf _site"
     },
     "keywords": [],
     "author": "Matthias Baetens",
     "license": "ISC",
+        "engines": {
+            "node": ">=18"
+        },
     "devDependencies": {
-        "@11ty/eleventy": "^1.0.2"
+        "@11ty/eleventy": "^3.0.0"
     },
     "dependencies": {
         "markdown-it-anchor": "^9.2.0",
