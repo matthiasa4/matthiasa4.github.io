@@ -10,20 +10,22 @@ description: "In this post we deep dive into the design and deployment of an Att
 Ever wondered how "much" internet we have? While (as usually) the answer depends on "how do you want to measure it", according to [Netcraft](https://www.netcraft.com/blog/june-2025-web-server-survey) we have about 1.25 billion websites (June 2025). Statista estimates that we created, consumed and stored [149 zettabytes in 2024](https://www.statista.com/statistics/871513/worldwide-data-created/). That's 149 sextillion bytes (149,000,000,000,000,000,000,000 bytes), 149 000 exabytes or 149 billion terabytes. **A. lot. of. data.**
 
 Full table of contents:
-- [TLDR;](#tldr)
+- [TLDR;](#tldr%3B-🎯)
 - [What we built](#what-we-built)
   - [The complete tech stack](#the-complete-tech-stack)
-- [Diving deeper: building blocks](#diving-deeper-building-blocks)
+- [Diving deeper: building blocks](#diving-deeper-building-blocks-🔍)
   - [Agent framework: Strands Agents](#agent-framework-strands-agents)
-  - [(Reasoning) models](#reasoning-models)
-  - [Tool use and Model Context Protocol (MCP)](#tool-use-and-model-context-protocol-mcp)
-    - [Playwright](#playwright)
+  - [(Reasoning) models](#(reasoning)-models-🧠)
+  - [Tool use and Model Context Protocol (MCP)](#tool-use-and-model-context-protocol-(mcp)-🛠️)
+    - [Playwright](#playwright-�)
     - [Filesystem](#filesystem)
-  - [Grounding and retrieval-augmented generation (RAG)](#grounding-and-retrieval-augmented-generation-rag)
-  - [Productionising the whole thing](#productionising-the-whole-thing)
+  - [Grounding and retrieval-augmented generation (RAG)](#grounding-and-retrieval-augmented-generation-(rag)-📚)
+  - [Productionising the whole thing](#productionising-the-whole-thing-🚀)
     - [Deployment](#deployment)
-    - [Observability and evaluation](#observability-and-evaluation)
-- [Conclusion and future work](#conclusion-and-future-work)
+    - [Observability and evaluation](#observability-and-evaluation-📊)
+- [Conclusion and future work](#conclusion-and-future-work-🎬)
+  - [Conclusion](#conclusion)
+  - [Future work](#future-work)
 
 How much of that data is consumed by us, the flesh and blood human, you ask? Well, since 2024, you'll be happy to hear, less than half! Bot traffic accounted for 51% of all web traffic, according to [2025's Imperva Bad Bot Report](https://www.thalesgroup.com/en/worldwide/defence-and-security/press_release/artificial-intelligence-fuels-rise-hard-detect-bots). Malicious bots made up 37% of all traffic.
 
