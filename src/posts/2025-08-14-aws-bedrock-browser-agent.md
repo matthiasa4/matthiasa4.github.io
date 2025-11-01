@@ -266,7 +266,7 @@ https://aws.github.io/bedrock-agentcore-starter-toolkit/user-guide/observability
        style="max-width: 100%; height: auto;">
 </div>
 
-This way, everything (logs, metrics, and traces) are neatly stored in CloudWatch and you just need to keep an eye out on the [Generative AI observability](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/GenAI-observability.html) page!
+This way, everything (logs, metrics, and traces) are neatly stored in CloudWatch and you just need to keep an eye out on the [GenAI observability](https://aws.amazon.com/blogs/mt/launching-amazon-cloudwatch-generative-ai-observability-preview/) page!
 
 # Conclusion and future work 🎬
 
