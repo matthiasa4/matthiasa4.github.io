@@ -3,7 +3,7 @@ layout: layouts/post.njk
 date: 2025-08-14
 tags: 
   - posts
-title: "Browse to Break: Productionizing Agentic ASM on AWS with Bedrock & Strands"
+title: "Browse to Break: Productionising Agentic ASM on AWS with Bedrock & Strands"
 description: "In this post we deep dive into the design and deployment of an Attack Surface Management agent built on Strands Agents, Amazon Bedrock, AgentCore, and Knowledge Bases"
 ---
 
@@ -12,20 +12,20 @@ ${toc}
 Ever wondered how "much" internet we have? While (as usually) the answer depends on "how do you want to measure it", according to [Netcraft](https://www.netcraft.com/blog/june-2025-web-server-survey) we have about 1.25 billion websites (June 2025). Statista estimates that we created, consumed and stored [149 zettabytes in 2024](https://www.statista.com/statistics/871513/worldwide-data-created/). That's 149 sextillion bytes (149,000,000,000,000,000,000,000 bytes), 149 000 exabytes or 149 billion terabytes. **A. lot. of. data.**
 
 Full table of contents:
-- [TLDR;](#tldr%3B-🎯)
+- [TLDR; 🎯](#tldr-)
 - [What we built](#what-we-built)
   - [The complete tech stack](#the-complete-tech-stack)
-- [Diving deeper: building blocks](#diving-deeper-building-blocks-🔍)
+- [Diving deeper: building blocks 🔍](#diving-deeper-building-blocks-)
   - [Agent framework: Strands Agents](#agent-framework-strands-agents)
-  - [(Reasoning) models](#(reasoning)-models-🧠)
-  - [Tool use and Model Context Protocol (MCP)](#tool-use-and-model-context-protocol-(mcp)-🛠️)
+  - [(Reasoning) models 🧠](#reasoning-models-)
+  - [Tool use and Model Context Protocol (MCP) 🛠️](#tool-use-and-model-context-protocol-mcp-️)
     - [Playwright](#playwright)
     - [Filesystem](#filesystem)
-  - [Grounding and retrieval-augmented generation (RAG)](#grounding-and-retrieval-augmented-generation-(rag)-📚)
-  - [Productionising the whole thing](#productionising-the-whole-thing-🚀)
+  - [Grounding and retrieval-augmented generation (RAG) 📚](#grounding-and-retrieval-augmented-generation-rag-)
+  - [Productionising the whole thing 🚀](#productionising-the-whole-thing-)
     - [Deployment](#deployment)
-    - [Observability and evaluation](#observability-and-evaluation-📊)
-- [Conclusion and future work](#conclusion-and-future-work-🎬)
+    - [Observability and evaluation 📊](#observability-and-evaluation-)
+- [Conclusion and future work 🎬](#conclusion-and-future-work-)
   - [Conclusion](#conclusion)
   - [Future work](#future-work)
 
@@ -90,7 +90,7 @@ But what would a good blogpost be without a nice architecture diagram?
        style="max-width: 100%; height: auto;">
 </div>
 
-Protip: checkout my colleagues [article](https://engineering.doit.com/building-aws-architecture-with-mcp-servers-and-strands-agents-e53bd163962f) on using Strands and MCP to generate your diagram!
+Protip: checkout my colleague's [article](https://engineering.doit.com/building-aws-architecture-with-mcp-servers-and-strands-agents-e53bd163962f) on using Strands and MCP to generate your diagram!
 
 But without further ado, let's dive one level deeper into each of these components!
 
@@ -219,7 +219,7 @@ For deployment, the options in the documentation are heavily AWS biased (think E
 
 Fargate is AWS version of "bring your container and forget about servers and scaling", hence you will find a [Dockerfile](https://github.com/matthiasa4/aws-bedrock-browser-use/blob/main/Dockerfile) in the repo. It installs the necessary dependencies, including the MCP servers and browser dependencies. I included a [`docker-compose`](https://github.com/matthiasa4/aws-bedrock-browser-use/blob/main/docker-compose.yml) as well to test locally. Once you're happy, you'll want to push them to ECR ([Elastic Container Registry](https://aws.amazon.com/ecr/)). There is a [`cdk` folder](https://github.com/matthiasa4/aws-bedrock-browser-use/tree/main/cdk) taking care of setting up the necessary infrastructure (think Fargate Service, Load Balancer, VPC, IAM roles etc) and I recommend taking a look at the [README](https://github.com/matthiasa4/aws-bedrock-browser-use/blob/main/cdk/README.md) for more information.
 
-The other option is through a relatively recent adition to the Bedrock suite of products: [AgentCore](https://www.aboutamazon.com/news/aws/aws-summit-agentic-ai-innovations-2025). With relatively [few code changes](https://github.com/matthiasa4/aws-bedrock-browser-use/commit/b0a27989d9a63e223ee98a39a24d158422ab95a8), we managed to replace the Playwright browser with the AgentCore managed browser which illustrates the composability and building blocks Strands Agents gives you brilliantly. 
+The other option is through a relatively recent addition to the Bedrock suite of products: [AgentCore](https://www.aboutamazon.com/news/aws/aws-summit-agentic-ai-innovations-2025). With relatively [few code changes](https://github.com/matthiasa4/aws-bedrock-browser-use/commit/b0a27989d9a63e223ee98a39a24d158422ab95a8), we managed to replace the Playwright browser with the AgentCore managed browser which illustrates the composability and building blocks Strands Agents gives you brilliantly.
 
 AWS also opensourced a [starter toolkit for AgentCore](https://github.com/aws/bedrock-agentcore-starter-toolkit). With a simple `agentcore configure` and `agentcore launch` you're off to the races (or should I say cloud?). Check out the [AgentCore Runtime Quickstart](https://aws.github.io/bedrock-agentcore-starter-toolkit/user-guide/runtime/quickstart.html#step-4-configure-your-agent). In order for me to use the fully managed runtime that abstracts away the container as well (and thus not spinning up a separate filesystem MCP), I refactored the state slightly to use native state instead of saving everything to disk - but logic stayed more or less the same. No fiddling with CDK, VPCs, and load balancers in this case, just nice and easy deployment.
 
@@ -242,7 +242,7 @@ In the first iteration, I integrated my agent with the observability platform of
        style="max-width: 100%; height: auto;">
 </div>
 
-1. All the loops your agent does while trying to reach it's goal
+1. All the loops your agent does while trying to reach its goal
 2. LLM calls (with input and output) that are part of that loop (great to inform iterations on your system prompt and potentially tool descriptions). Notice also the total input and output tokens
 3. Tool calls (with input and output)
 4. Extra information for each of the components on the left that are selectable, in this case the goal I gave the agent and the output it generated (report with the vulnerabilities it has found)
